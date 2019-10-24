@@ -23,30 +23,48 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
                 {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar"},
                 {title: "Skis", image: "assets/example3.jpg", description: "Used Skis"}];
 
-var postings = [];
 
-function addPost(var title, var image, var description)
+function addPost(title, image, description)
 {
+  //Create card
   let card = document.createElement("div");
-  card.className = 'posting';
+  card.className = 'card';
+  card.style = "width: 18rem; text-align: center;"
 
+  //Add card body
   let cardBody = document.createElement('div');
-  cardBody.className = description;
+  card.appendChild(cardBody);
+  cardBody.className = 'card-header';
 
-  let description = document.createElement('p');
-  description.innerText = task.description;
-  description.className = 'posting-description';
+  //Add image
+  let picture = document.createElement('img');
+  picture.style = 'height: 30% width: 30%';
+  picture.className = 'card-img-top';
+  picture.src = image;
+  card.appendChild(picture);
 
-  postings.push(card);
-  console.log(postings);
+
+  //Add title
+  let cardTitle = document.createElement('h5');
+  cardTitle.innerHTML = title;
+  cardBody.appendChild(cardTitle);
+
+  //Add description
+  let desc = document.createElement('p');
+  card.appendChild(desc);
+  desc.innerText = description;
+  cardBody.appendChild(desc);
+
   return card;
 }
 
 function loadPosts()
 {
   var i;
-  for (i = 0; i < storedCards.length; i++) {
-    var newPost = addPost(players[i].title, players[i].image, players[i].description);
-    document.body.appendChild(newPost);
+  for (i = 0; i < storedCards.length; i++)
+  {
+    var newPost = addPost(storedCards[i].title, storedCards[i].image, storedCards[i].description);
+    console.log(newPost);
+    document.getElementById('postings').appendChild(newPost);
   }
 }

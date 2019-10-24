@@ -12,64 +12,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- User JavaScript -->
+  <script language="JavaScript" type="text/javascript" src="index.js"></script>
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 
 
-<!-- Javascript for postings -->
-<script type="text/javascript">
 
-// Saved postings
-  var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv"},
-                  {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar"},
-                  {title: "Skis", image: "assets/example3.jpg", description: "Used Skis"}];
-
-  var postings = [];
-
-  function addPost(var title, var image, var description)
-  {
-    let card = document.createElement("div");
-    card.className = 'posting';
-
-    let cardBody = document.createElement('div');
-    cardBody.className = description;
-
-    let description = document.createElement('p');
-    description.innerText = task.description;
-    description.className = 'posting-description';
-
-    postings.push(card);
-    console.log(postings);
-    return card;
-  }
-
-  function loadPosts()
-  {
-    var i;
-    for (i = 0; i < storedCards.length; i++) {
-      var newPost = addPost(players[i].title, players[i].image, players[i].description);
-      document.body.appendChild(newPost);
-    }
-  }
-</script>
-
-
-
-
-
-  <body onload="loadPosts()">
-      <header>
+<body onload="loadPosts()">
+  <header>
 <!-- CU Brand Header -->
-          <div id="cuImage-1">
-            <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
-          </div>
-          <div id="cuImage-2">
-            <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
-          </div>
-      </header>
+    <div id="cuImage-1">
+      <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
     </div>
+    <div id="cuImage-2">
+      <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
+    </div>
+  </header>
+  <!-- </div> -->
 <!-- Navbar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,43 +103,17 @@
 
 </section>
 
-<footer id ="site-footer">
-  <div> <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo"></div>
-</footer>
+<!-- HTML for postings -->
+  <div class="row" id = "postings" style="margin: auto;">
+
+  </div>
 
 
 
-
-
-
-
-
-
-
-<!--javascript for login-->
-  <script>
-    function check(form)
-    {
-      if(form.userid.value == "myuserid" && form.pswrd.value == "mypswrd"){
-
-
-        window.open('target.html')
-
-
-      }
-      else{
-        alert("Error Password or Username")
-      }
-    }
-  </script>
-
-    <!-- HTML for postings -->
-    <div class="row">
-
-    </div>
-
-
+<!-- Footer -->
+  <footer id ="site-footer">
+    <div> <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo"></div>
+  </footer>
 <!-- class="d-block w-100" -->
-
   </body>
 </html>
