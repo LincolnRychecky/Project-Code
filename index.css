@@ -1,0 +1,64 @@
+/* For desktop and laptop screen sizes */
+@media only screen and (min-width: 600px)
+{
+	header
+	{
+		background-color: black;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		display: flex;
+		justify-content: space-between;
+	}
+	.cuImage
+	{
+		max-width: 30%;	 
+		margin-left: 5%;
+		margin-right: 5%; 
+	}
+	#cuImage-1
+	{
+		flex: 50%;
+		/*text-align: left;*/
+	}
+	#cuImage-2
+	{
+		flex: 50%;
+		text-align: right;	
+	}
+}
+section
+{
+	margin-bottom: 50px;
+	height: 500px;
+	text-align: center;
+	background-color: #272727;
+}
+.c-image
+{
+	max-height: 500px;
+	
+}
+/* For mobile and tablet screen sizes */
+@media only screen and (max-width: 600px)
+{
+	header
+	{
+		background-color: black;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		/*display: flex;*/
+		/*justify-content: space-between;*/
+	}
+	.cuImage
+	{
+		max-width: 40%;	 
+		margin-left: 5%;
+		margin-right: 5%; 
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+}
+/*.bg-company-white
+{
+	background-color: white !important;
+}*/
