@@ -58,6 +58,12 @@ section
 		padding-bottom: 5px;
 	}
 }
+.our-mission
+{
+  font-family: "Lato", sans-serif;
+  max-width : 2000px;
+  margin-top:46px;
+}
 /*.bg-company-white
 {
 	background-color: white !important;
