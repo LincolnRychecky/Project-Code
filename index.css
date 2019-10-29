@@ -11,9 +11,9 @@
 	}
 	.cuImage
 	{
-		max-width: 30%;	 
+		max-width: 30%;
 		margin-left: 5%;
-		margin-right: 5%; 
+		margin-right: 5%;
 	}
 	#cuImage-1
 	{
@@ -23,7 +23,7 @@
 	#cuImage-2
 	{
 		flex: 50%;
-		text-align: right;	
+		text-align: right;
 	}
 }
 section
@@ -36,7 +36,7 @@ section
 .c-image
 {
 	max-height: 500px;
-	
+
 }
 /* For mobile and tablet screen sizes */
 @media only screen and (max-width: 600px)
@@ -51,9 +51,9 @@ section
 	}
 	.cuImage
 	{
-		max-width: 40%;	 
+		max-width: 40%;
 		margin-left: 5%;
-		margin-right: 5%; 
+		margin-right: 5%;
 		padding-top: 5px;
 		padding-bottom: 5px;
 	}

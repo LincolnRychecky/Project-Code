@@ -19,17 +19,17 @@ function check(form)
 //Load and add Postings
 
 // Saved postings
-var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv"},
-                {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar"},
-                {title: "Skis", image: "assets/example3.jpg", description: "Used Skis"}];
+var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+                {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar", price: 300},
+                {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190}];
 
-
-function addPost(title, image, description)
+//Add post function
+function addPost(title, image, description, price)
 {
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
-  card.style = "width: 18rem; text-align: center;"
+  card.style = "col; width: 20rem; margin: auto;"
 
   //Add card body
   let cardBody = document.createElement('div');
@@ -38,15 +38,20 @@ function addPost(title, image, description)
 
   //Add image
   let picture = document.createElement('img');
-  picture.style = 'height: 30% width: 30%';
+  let anchor = document.createElement('a');
+  anchor.href = image;
+  anchor.target = 'popup'
+  anchor.class = 'expandImage'
+  anchor.setAttribute('onclick', "window.open(" + image + ",'popup','width=600,height=600'); return false;");
+  card.appendChild(anchor);
+  picture.style = 'height: 25rem; width: 20rem; object-fit: cover;'
   picture.className = 'card-img-top';
   picture.src = image;
-  card.appendChild(picture);
+  anchor.appendChild(picture);
 
-
-  //Add title
+  //Add title and price
   let cardTitle = document.createElement('h5');
-  cardTitle.innerHTML = title;
+  cardTitle.innerHTML = title + ": $" + price;
   cardBody.appendChild(cardTitle);
 
   //Add description
@@ -58,13 +63,20 @@ function addPost(title, image, description)
   return card;
 }
 
+//load posts. Called once page is loaded
 function loadPosts()
 {
   var i;
   for (i = 0; i < storedCards.length; i++)
   {
-    var newPost = addPost(storedCards[i].title, storedCards[i].image, storedCards[i].description);
+    var newPost = addPost(storedCards[i].title, storedCards[i].image, storedCards[i].description, storedCards[i].price);
     console.log(newPost);
     document.getElementById('postings').appendChild(newPost);
   }
 }
+
+
+//JQuery for popup window
+$(document).ready(function() {
+ $('.expandImage').magnificPopup({type:'image', delegate: 'anchor'});
+});
