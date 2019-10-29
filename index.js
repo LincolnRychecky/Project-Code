@@ -21,15 +21,28 @@ function check(form)
 // Saved postings
 var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
                 {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar", price: 300},
-                {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190}];
+                {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
+              {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
+            {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
+          {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+        {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+      {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+      {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+    {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+    {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+  {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
+  {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
 
 //Add post function
 function addPost(title, image, description, price)
 {
+
+  //ADD DROPDOWNMENU WITH CONTACT INFORMATION OF USER WHO POSTED ITEM
+
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
-  card.style = "col; width: 20rem; margin: auto;"
+  card.style = "col;";
 
   //Add card body
   let cardBody = document.createElement('div');
@@ -44,7 +57,7 @@ function addPost(title, image, description, price)
   anchor.class = 'expandImage'
   anchor.setAttribute('onclick', "window.open(" + image + ",'popup','width=600,height=600'); return false;");
   card.appendChild(anchor);
-  picture.style = 'height: 25rem; width: 20rem; object-fit: cover;'
+  picture.style = 'height: 25rem; object-fit: cover;'
   picture.className = 'card-img-top';
   picture.src = image;
   anchor.appendChild(picture);
@@ -76,7 +89,7 @@ function loadPosts()
 }
 
 
-//JQuery for popup window
-$(document).ready(function() {
- $('.expandImage').magnificPopup({type:'image', delegate: 'anchor'});
-});
+// //JQuery for popup window
+// $(document).ready(function() {
+//  $('.expandImage').magnificPopup({type:'image', delegate: 'anchor'});
+// });
