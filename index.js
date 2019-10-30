@@ -1,17 +1,33 @@
 //login
 
+//saved user logins
+var users = ["admin"];
+var passwords = ["bufflist"];
+var currentUser = "Not Logged in";
+
+//Login to Buff List
 function check(form)
 {
-  if(form.userid.value == "myuserid" && form.pswrd.value == "mypswrd"){
-
-
-    window.open('target.html')
-
-
+  for(var i = 0; i < users.length; i++){
+    //if the pair is located in the users and passwords arrays
+    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
+      currentUser = users[i];
+      alert("Hello, " + currentUser + " welcome back to Buff List.")
+      return
+    }
   }
-  else{
-    alert("Error Password or Username")
-  }
+    alert("Either your username or password is incorrect")
+    return
+}
+//Log off of Buff List
+function logOff(){
+currentUser = "Not Logged in";
+return
+
+}
+//Create an Account
+function createAccount(){
+
 }
 
 
