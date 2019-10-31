@@ -58,7 +58,6 @@ function addPost(title, image, description, price)
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
-  card.style = "col;";
 
   //Add card body
   let cardBody = document.createElement('div');
