@@ -9,6 +9,11 @@
 		display: flex;
 		justify-content: space-between;
 	}
+	#site-footer
+	{
+		height: 100px;
+		background: black;
+	}
 	.cuImage
 	{
 		max-width: 30%;
