@@ -1,7 +1,47 @@
+/* For all screen sizes*/
+html, body
+{
+	font-family: "Lato", sans-serif;
+	background-color: black;
+}
+#content
+{
+	background-color: white;
+}
+section
+{
+	margin-bottom: 50px;
+	height: 500px;
+	text-align: center;
+	background-color: #272727;
+}
+.c-image
+{
+	max-height: 500px;
+
+}
+#logo
+{
+	height: 30px;
+}
+.our-mission
+{ 
+  max-width : 2000px;
+  margin-top:46px;
+}
+#search, form h5
+{
+	color: #CFB87C;
+}
+#login:hover
+{
+	color: #CFB87C;
+}
+
 /* For desktop and laptop screen sizes */
 @media only screen and (min-width: 600px)
 {
-	header
+	header, footer
 	{
 		background-color: black;
 		padding-top: 20px;
@@ -16,60 +56,86 @@
 	}
 	.cuImage
 	{
-		max-width: 30%;
+		height: 40px;
+		width: auto;
 		margin-left: 5%;
 		margin-right: 5%;
 	}
 	#cuImage-1
 	{
 		flex: 50%;
-		/*text-align: left;*/
 	}
 	#cuImage-2
 	{
 		flex: 50%;
 		text-align: right;
 	}
-}
-section
-{
-	margin-bottom: 50px;
-	height: 500px;
-	text-align: center;
-	background-color: #272727;
-}
-.c-image
-{
-	max-height: 500px;
-
-}
-/* For mobile and tablet screen sizes */
-@media only screen and (max-width: 600px)
-{
-	header
+	#login
 	{
-		background-color: black;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		/*display: flex;*/
-		/*justify-content: space-between;*/
+		margin-right: 15px;
+		font-size: x-small;
+		color: white;
+		cursor: pointer;
+		white-space: nowrap ;
+		text-align: center;
+	}
+	#user
+	{
+		background-image: url("assets/user.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 20px;
+		width: 30px;
+	}
+}
+/* For table screen sizes only*/
+@media only screen and (max-width: 991px)
+{
+	#logo
+	{
+		margin-top: 15px;
 	}
 	.cuImage
 	{
-		max-width: 40%;
+		height: 40px;
+		width: auto;
 		margin-left: 5%;
 		margin-right: 5%;
 		padding-top: 5px;
 		padding-bottom: 5px;
 	}
 }
-.our-mission
+
+/* For mobile and tablet screen sizes */
+@media only screen and (max-width: 600px)
 {
-  font-family: "Lato", sans-serif;
-  max-width : 2000px;
-  margin-top:46px;
+	header, footer
+	{
+		background-color: black;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.cuImage
+	{
+		height: 40px;
+		width: auto;
+		margin-left: 5%;
+		margin-right: 5%;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	#login
+	{
+		margin-left: 5%;
+		font-size: small;
+		color: white;
+		cursor: pointer;
+		text-align: left;
+	}
+	#searchText
+	{
+		width: 50%;
+		margin-right: 10px;
+	}
 }
-/*.bg-company-white
-{
-	background-color: white !important;
-}*/
