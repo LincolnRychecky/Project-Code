@@ -4,6 +4,8 @@
   <title>Buff List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Browser Icon -->
+  <link rel="icon" href="assets/icon.png">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- jQuery library -->
@@ -20,28 +22,70 @@
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-
-
-<!-- </div> -->
-
 <body onload="loadPosts()">
+  <!-- CU Brand Header -->
   <header>
-<!-- CU Brand Header -->
     <div id="cuImage-1">
       <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
     </div>
     <div id="cuImage-2">
       <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
     </div>
+      <!-- Button trigger modal -->
+      <div id="login" data-toggle="modal" data-target="#ModalCenter"><div id="user"></div>Login<br>Sign up</div>
+      <!-- Modal -->
+      <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLongTitle">Welcome to Buff List!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Sign Up Form -->
+                <form>
+                  <h5>Sign Up</h5>
+                  <div class="form-group">
+                    <input type="name" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                    <small id="emailHelp" class="form-text text-muted">Must be at least 6 characters long.</small>
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="SignUp">Sign up</button>
+                </form>
+                <br>
+              <!-- Login Form -->
+                <form>
+                  <h5>Login</h5>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="Login">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>            
+            </div>
+          </div>
+        </div>
+      </div>
   </header>
-  <!-- </div> -->
 <!-- Navbar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#"> <img src="assets/logo.png"/></a>
+    <a class="navbar-brand" href="#"> <img src="assets/logo.png" id="logo"/></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#"> Sell <span class="sr-only">(current)</span></a>
@@ -53,69 +97,64 @@
         <a class="nav-link" href="#"> My Account </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> About Us </a>
+        <a class="nav-link" href="aboutus.html"> About Us </a>
       </li>
     </ul>
-    <form class = "form-inline">
-      Username<input type="text" name="userid"/>
-      Password<input type="password" name="pswrd"/>
-      <input type="button" onclick="check(this.form)" value="Login"/>
-    </form>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" id="searchText" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
     </form>
   </div>
 </nav>
-
 <!-- Postings -->
-<section>
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="c-image" src="assets/example1.jpg" alt="First slide">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>$80</h5>
-          <p>Used 32in Plasma Screen TV</p>
+<div id="content">
+  <section>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="c-image" src="assets/example1.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>$80</h5>
+            <p>Used 32in Plasma Screen TV</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="c-image" src="assets/example2.jpg" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>$300</h5>
+            <p>Used Electric Guitar</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="c-image" src="assets/example3.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>$190</h5>
+            <p>Used Skis</p>
+          </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img class="c-image" src="assets/example2.jpg" alt="Second slide">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>$300</h5>
-          <p>Used Electric Guitar</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="c-image" src="assets/example3.jpg" alt="Third slide">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>$190</h5>
-          <p>Used Skis</p>
-        </div>
-      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-</section>
-
-<!-- HTML for postings -->
-  <div class = "card-columns" id = "postings" style = "margin-left: 1rem; margin-right: 1rem;">
-  </div>
-
-
-
+  </section>
+  <!-- HTML for postings -->
+    <div class = "card-columns" id = "postings" style = "margin-left: 1rem; margin-right: 1rem;">
+    </div>
+</div>
 <!-- Footer -->
-  <footer id ="site-footer">
-    <div> <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo"></div>
+  <footer>
+    <div id="cuImage-1">
+      <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
+    </div>
+    <div id="cuImage-2">
+      <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
+    </div>
   </footer>
-<!-- class="d-block w-100" -->
   </body>
 </html>

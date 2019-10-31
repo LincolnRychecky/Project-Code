@@ -4,6 +4,8 @@
   <title>About Us</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Browser Icon -->
+  <link rel="icon" href="assets/icon.png">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- jQuery library -->
@@ -12,54 +14,96 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- User JavaScript -->
-  <script language="JavaScript" type="text/javascript" src="index.js"></script>
   <!-- CSS Style sheet -->
-  <link rel="stylesheet" type="text/css" href="index.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
   <body>
-      <header>
-          <div id="cuImage-1">
-            <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo" >
+  <!-- CU Brand Header -->
+  <header>
+    <div id="cuImage-1">
+      <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
+    </div>
+    <div id="cuImage-2">
+      <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
+    </div>
+      <!-- Button trigger modal -->
+      <div id="login" data-toggle="modal" data-target="#ModalCenter"><div id="user"></div>Login<br>Sign up</div>
+      <!-- Modal -->
+      <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLongTitle">Welcome to Buff List!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Sign Up Form -->
+                <form>
+                  <h5>Sign Up</h5>
+                  <div class="form-group">
+                    <input type="name" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                    <small id="emailHelp" class="form-text text-muted">Must be at least 6 characters long.</small>
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="SignUp">Sign up</button>
+                </form>
+                <br>
+              <!-- Login Form -->
+                <form>
+                  <h5>Login</h5>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="Login">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>            
+            </div>
           </div>
-          <div id="cuImage-2">
-            <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
-          </div>
-      </header>
-      <!-- Navbar -->
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="#"> <img src="assets/logo.png"/></a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link" href="#"> Sell </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Event Calendar </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> My Account </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#"> About Us <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-          <form class = "form-inline">
-            Username<input type="text" name="userid"/>
-            Password<input type="password" name="pswrd"/>
-            <input type="button" onclick="check(this.form)" value="Login"/>
-          </form>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
-      </nav>
-      <!-- Page content -->
+      </div>
+  </header>
+    <div id="content">
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#"><img src="assets/logo.png" id="logo"/></a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"> Sell <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Event Calendar </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> My Account </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"> About Us </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!-- Page content -->
       <div class="w3-card-4 w3-margin w3-white">
         <div class="our-mission">
           <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
@@ -70,34 +114,44 @@
         </div>
       </div>
       <img src="assets/campus3.jpeg" class="w3-image w3-greyscale-min" style="width:100%">
-      <!-- Contact Section -->
-      <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-        <h2 class="w3-wide w3-center">CONTACT</h2>
-        <div class="w3-row w3-padding-32">
-          <div class="w3-col m6 w3-large w3-margin-bottom">
-            <i class="fa fa-map-marker" style="width:30px"></i> University of Colorado Boulder<br>
-            <i class="fa fa-envelope" style="width:30px"> </i> Email: @mail.com<br>
-          </div>
-          <div class="w3-col m6">
-            <form onsubmit="submitted()">
-              <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-                <div class="w3-half">
-                  <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+        <!-- Contact Section -->
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+          <h2 class="w3-wide w3-center">CONTACT</h2>
+          <div class="w3-row w3-padding-32">
+            <div class="w3-col m6 w3-large w3-margin-bottom">
+              <i class="fa fa-map-marker" style="width:30px"></i> University of Colorado Boulder<br>
+              <i class="fa fa-envelope" style="width:30px"> </i> Email: @mail.com<br>
+            </div>
+            <div class="w3-col m6">
+              <form onsubmit="submitted()">
+                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                  <div class="w3-half">
+                    <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                  </div>
+                  <div class="w3-half">
+                    <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                  </div>
                 </div>
-                <div class="w3-half">
-                  <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-                </div>
-              </div>
-              <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-              <input class="w3-button w3-black w3-section w3-right" type="submit" value="Submit">
-            </form>
+                <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                <input class="w3-button w3-black w3-section w3-right" type="submit" value="Submit">
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      <script>
-      function submitted() {
-        alert("Thank you! We received your message.");
-      }
-    </script>
+        <script>
+        function submitted() {
+          alert("Thank you! We received your message.");
+        }
+      </script>
+  </div>
+    <!-- Footer -->
+  <footer>
+    <div id="cuImage-1">
+      <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
+    </div>
+    <div id="cuImage-2">
+      <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
+    </div>
+  </footer>
     </body>
   </html>
