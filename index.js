@@ -103,6 +103,31 @@ function loadPosts()
   }
 }
 
+//add a post to the firebase
+function addPost()
+{
+form.addEventListener('submit', (e) =>)
+  e.preventDefault();
+  db.collection('posts').add({
+
+    Headline: form.headline1.value
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // //JQuery for popup window
 // $(document).ready(function() {
