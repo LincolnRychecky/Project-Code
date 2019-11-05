@@ -49,6 +49,20 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
 
+  // Import Admin SDK
+  var admin = require("firebase-admin");
+
+  // Get a database reference to our posts
+  var db = admin.database();
+  var ref = db.ref("/PostingDataRetrievalTest/Yo9KbNh7k4rrqOPQW7ul");
+
+  // Attach an asynchronous callback to read the data at our posts reference
+  ref.on("Title", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+
 //Add post function
 function addPost(title, image, description, price)
 {
