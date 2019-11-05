@@ -49,22 +49,20 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
 
-  // Import Admin SDK
-  var admin = require("firebase-admin");
+  //Get reference to database service
+  var database = firebase.database();
 
-  // Get a database reference to our posts
-  var db = admin.database();
-  var ref = db.ref("/PostingDataRetrievalTest/Yo9KbNh7k4rrqOPQW7ul");
+  var ref = firebase.database().ref();
 
-  // Attach an asynchronous callback to read the data at our posts reference
-  ref.on("Title", function(snapshot) {
-    console.log(snapshot.val());
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
+ref.on("value", function(snapshot) {
+   console.log(snapshot.val());
+}, function (error) {
+   console.log("Error: " + error.code);
+});
+
 
 //Add post function
-function addPost(title, image, description, price)
+function addPosting(title, image, description, price)
 {
 
   //ADD DROPDOWNMENU WITH CONTACT INFORMATION OF USER WHO POSTED ITEM
@@ -111,7 +109,7 @@ function loadPosts()
   var i;
   for (i = 0; i < storedCards.length; i++)
   {
-    var newPost = addPost(storedCards[i].title, storedCards[i].image, storedCards[i].description, storedCards[i].price);
+    var newPost = addPosting(storedCards[i].title, storedCards[i].image, storedCards[i].description, storedCards[i].price);
     console.log(newPost);
     document.getElementById('postings').appendChild(newPost);
   }
@@ -120,11 +118,12 @@ function loadPosts()
 //add a post to the firebase
 function addPost()
 {
-form.addEventListener('submit', (e) =>)
-  e.preventDefault();
-  db.collection('posts').add({
+  form.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    db.collection('posts').add({
 
-    Headline: form.headline1.value
+      Headline: form.headline1.value
+    })
   })
 }
 
