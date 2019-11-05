@@ -54,11 +54,11 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
 
   var ref = firebase.database().ref();
 
-ref.on("value", function(snapshot) {
-   console.log(snapshot.val());
-}, function (error) {
-   console.log("Error: " + error.code);
-});
+  ref.on("value", function(snapshot) {
+     console.log(snapshot.val());
+  }, function (error) {
+     console.log("Error: " + error.code);
+  });
 
 
 //Add post function
