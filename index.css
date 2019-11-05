@@ -18,14 +18,33 @@ section
 .c-image
 {
 	max-height: 500px;
-
+}
+h1
+{
+	color: white;
+	text-align: center;
+}
+label
+{
+	color: white;
+}
+.btn-submit
+{
+	background-color: #FFD700; /* Gold */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 #logo
 {
-	height: 30px;
+	height: 60px;
 }
 .our-mission
-{ 
+{
   max-width : 2000px;
   margin-top:46px;
 }
@@ -37,6 +56,11 @@ section
 {
 	color: #CFB87C;
 }
+#addButton
+{
+	float: right;
+}
+
 
 /* For desktop and laptop screen sizes */
 @media only screen and (min-width: 600px)
