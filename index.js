@@ -5,6 +5,8 @@ var storage = firebase.storage();
 var database = firebase.database();
 // Create a storage reference from our storage service
 var storageRef = storage.ref();
+//Create Firestore reference
+var db = firebase.firestore();
 
 //login
 
@@ -102,9 +104,31 @@ function addPosting(title, image, description, price)
 //load posts. Called once page is loaded
 function loadPosts()
 {
-  var ref = firebase.database().ref();
 
-  ref.on("value", function(snapshot) {
+  //Try for firestore
+  db.collection("PostingDataRetrievalTest").doc("PostingData")
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      var post = doc.data();
+      var title = post.Title;
+      var description = post.Description;
+      var price = post.Price;
+      var image = post.Image;
+      var testPost = addPosting(title, image, description, price);
+      document.getElementById('postings').appendChild(testPost);
+      console.log(doc.data().Price);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
+
+  //only works with realtime database
+  database.ref().on("value", function(snapshot) {
     snapshot.forEach(function(childNodes){
      var post = snapshot.val().PostingDataRetrievalTest.PostingData;
      var title = post.Title;
