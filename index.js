@@ -1,3 +1,11 @@
+//Firebase references
+// Get a reference to the storage service, which is used to create references in your storage bucket
+var storage = firebase.storage();
+//Get reference to database service
+var database = firebase.database();
+// Create a storage reference from our storage service
+var storageRef = storage.ref();
+
 //login
 
 //saved user logins
@@ -49,18 +57,6 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
 
-  //Get reference to database service
-  var database = firebase.database();
-
-  var ref = firebase.database().ref();
-
-  ref.on("value", function(snapshot) {
-     console.log(snapshot.val());
-  }, function (error) {
-     console.log("Error: " + error.code);
-  });
-
-
 //Add post function
 function addPosting(title, image, description, price)
 {
@@ -106,13 +102,23 @@ function addPosting(title, image, description, price)
 //load posts. Called once page is loaded
 function loadPosts()
 {
-  var i;
-  for (i = 0; i < storedCards.length; i++)
-  {
-    var newPost = addPosting(storedCards[i].title, storedCards[i].image, storedCards[i].description, storedCards[i].price);
-    console.log(newPost);
-    document.getElementById('postings').appendChild(newPost);
-  }
+  var ref = firebase.database().ref();
+
+  ref.on("value", function(snapshot) {
+    snapshot.forEach(function(childNodes){
+     var post = snapshot.val().PostingDataRetrievalTest.PostingData;
+     var title = post.Title;
+     var description = post.Description;
+     var price = post.Price;
+     var image = post.image;
+     var testPost = addPosting(title, image, description, price);
+     document.getElementById('postings').appendChild(testPost);
+   });
+
+  }, function (error) {
+     console.log("Error: " + error.code);
+  });
+
 }
 
 //add a post to the firebase
