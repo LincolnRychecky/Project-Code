@@ -185,5 +185,29 @@
       <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
     </div>
   </footer>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+      authDomain: "buff-list.firebaseapp.com",
+      databaseURL: "https://buff-list.firebaseio.com",
+      projectId: "buff-list",
+      storageBucket: "buff-list.appspot.com",
+      messagingSenderId: "562024677329",
+      appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+      measurementId: "G-0LYL9PHLCC"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
   </body>
 </html>
