@@ -1,3 +1,50 @@
+<<<<<<< HEAD
+=======
+//Firebase references
+// Get a reference to the storage service, which is used to create references in your storage bucket
+var storage = firebase.storage();
+//Get reference to database service
+var database = firebase.database();
+// Create a storage reference from our storage service
+var storageRef = storage.ref();
+//Create Firestore reference
+var db = firebase.firestore();
+
+//login
+
+//saved user logins
+var users = ["admin"];
+var passwords = ["bufflist"];
+var currentUser = "Not Logged in";
+
+//Login to Buff List
+function check(form)
+{
+  for(var i = 0; i < users.length; i++){
+    //if the pair is located in the users and passwords arrays
+    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
+      currentUser = users[i];
+      alert("Hello, " + currentUser + " welcome back to Buff List.")
+      return
+    }
+  }
+    alert("Either your username or password is incorrect")
+    return
+}
+//Log off of Buff List
+function logOff(){
+currentUser = "Not Logged in";
+return
+
+}
+//Create an Account
+function createAccount(){
+
+}
+
+
+
+>>>>>>> master
 //Load and add Postings
 
 // Saved postings
@@ -14,18 +61,6 @@ var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Use
     {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
   {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
-
-  //Get reference to database service
-  var database = firebase.database();
-
-  var ref = firebase.database().ref();
-
-  ref.on("value", function(snapshot) {
-     console.log(snapshot.val());
-  }, function (error) {
-     console.log("Error: " + error.code);
-  });
-
 
 //Add post function
 function addPosting(title, image, description, price)
@@ -73,13 +108,45 @@ function addPosting(title, image, description, price)
 <<<<<<< Updated upstream
 function loadPosts()
 {
-  var i;
-  for (i = 0; i < storedCards.length; i++)
-  {
-    var newPost = addPosting(storedCards[i].title, storedCards[i].image, storedCards[i].description, storedCards[i].price);
-    console.log(newPost);
-    document.getElementById('postings').appendChild(newPost);
-  }
+
+  //Try for firestore
+  db.collection("PostingDataRetrievalTest").doc("PostingData")
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      var post = doc.data();
+      var title = post.Title;
+      var description = post.Description;
+      var price = post.Price;
+      var image = post.Image;
+      var testPost = addPosting(title, image, description, price);
+      document.getElementById('postings').appendChild(testPost);
+      console.log(doc.data().Price);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
+
+  //only works with realtime database
+  database.ref().on("value", function(snapshot) {
+    snapshot.forEach(function(childNodes){
+     var post = snapshot.val().PostingDataRetrievalTest.PostingData;
+     var title = post.Title;
+     var description = post.Description;
+     var price = post.Price;
+     var image = post.image;
+     var testPost = addPosting(title, image, description, price);
+     document.getElementById('postings').appendChild(testPost);
+   });
+
+  }, function (error) {
+     console.log("Error: " + error.code);
+  });
+
 }
 
 //add a post to the firebase
