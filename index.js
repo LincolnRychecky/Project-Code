@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
@@ -9,6 +10,8 @@ var firebaseConfig = {
   appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
   measurementId: "G-0LYL9PHLCC"
 };
+=======
+>>>>>>> master
 //Firebase references
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -22,6 +25,75 @@ var storageRef = storage.ref();
 //Create Firestore reference
 var db = firebase.firestore();
 
+<<<<<<< HEAD
+=======
+var provider = new firebase.auth.GoogleAuthProvider();
+
+//login
+
+//saved user logins
+var users = ["admin"];
+var passwords = ["bufflist"];
+var currentUser = "Not Logged in";
+
+//Googl logins
+function googleSignin() {
+   firebase.auth()
+
+   .signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+
+      console.log(token)
+      console.log(user)
+   }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(error.code)
+      console.log(error.message)
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')
+   });
+}
+
+
+
+
+//Login to Buff List
+function check(form)
+{
+  for(var i = 0; i < users.length; i++){
+    //if the pair is located in the users and passwords arrays
+    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
+      currentUser = users[i];
+      alert("Hello, " + currentUser + " welcome back to Buff List.")
+      return
+    }
+  }
+    alert("Either your username or password is incorrect")
+    return
+}
+//Log off of Buff List
+function logOff(){
+currentUser = "Not Logged in";
+return
+
+}
+//Create an Account
+function createAccount(){
+
+}
+
+>>>>>>> master
 //Load and add Postings
 // Saved postings
 var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
@@ -143,6 +215,7 @@ var firebaseRef = firebase.db().ref();
 firebaseRef.child("Text").set("Some Value");
 
 }
+<<<<<<< HEAD
 
 //add a post to the firestore
 document.getElementById("submitBtn").addEventListener("click", (e)=>{
@@ -156,6 +229,8 @@ document.getElementById("submitBtn").addEventListener("click", (e)=>{
   // getElementById("post_headline").value = '';
   // getElementById("price").value = '';
 });
+=======
+>>>>>>> master
 
 
 
