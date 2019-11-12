@@ -1,6 +1,18 @@
-<<<<<<< HEAD
-=======
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+  authDomain: "buff-list.firebaseapp.com",
+  databaseURL: "https://buff-list.firebaseio.com",
+  projectId: "buff-list",
+  storageBucket: "buff-list.appspot.com",
+  messagingSenderId: "562024677329",
+  appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+  measurementId: "G-0LYL9PHLCC"
+};
 //Firebase references
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 // Get a reference to the storage service, which is used to create references in your storage bucket
 var storage = firebase.storage();
 //Get reference to database service
@@ -10,43 +22,7 @@ var storageRef = storage.ref();
 //Create Firestore reference
 var db = firebase.firestore();
 
-//login
-
-//saved user logins
-var users = ["admin"];
-var passwords = ["bufflist"];
-var currentUser = "Not Logged in";
-
-//Login to Buff List
-function check(form)
-{
-  for(var i = 0; i < users.length; i++){
-    //if the pair is located in the users and passwords arrays
-    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
-      currentUser = users[i];
-      alert("Hello, " + currentUser + " welcome back to Buff List.")
-      return
-    }
-  }
-    alert("Either your username or password is incorrect")
-    return
-}
-//Log off of Buff List
-function logOff(){
-currentUser = "Not Logged in";
-return
-
-}
-//Create an Account
-function createAccount(){
-
-}
-
-
-
->>>>>>> master
 //Load and add Postings
-
 // Saved postings
 var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
                 {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar", price: 300},
@@ -105,7 +81,6 @@ function addPosting(title, image, description, price)
 }
 
 //load posts. Called once page is loaded
-<<<<<<< Updated upstream
 function loadPosts()
 {
 
@@ -150,18 +125,37 @@ function loadPosts()
 }
 
 //add a post to the firebase
-function addPost()
-{
-  form.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    db.collection('posts').add({
+// function addPost()
+// {
+//   form.addEventListener('submit', (e) =>{
+//     e.preventDefault();
+//     db.collection('posts').add({
+//
+//       Headline: form.headline1.value
+//     })
+//   })
+// }
 
-      Headline: form.headline1.value
-    })
-  })
+function submitClick(){
+window.alert("Hello");
+var firebaseRef = firebase.db().ref();
+
+firebaseRef.child("Text").set("Some Value");
+
 }
-=======
->>>>>>> Stashed changes
+
+//add a post to the firestore
+document.getElementById("submitBtn").addEventListener("click", (e)=>{
+  window.alert("Hello");
+  // console.log("Hello World");
+  // e.preventDefault();
+  // db.collection('User Ratings').add({
+  //   Review: document.getElementById("post_headline").value;
+  //   Stars: document.getElementById("price").value;
+  // });
+  // getElementById("post_headline").value = '';
+  // getElementById("price").value = '';
+});
 
 
 
