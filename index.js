@@ -17,7 +17,7 @@ var users = ["admin"];
 var passwords = ["bufflist"];
 var currentUser = "Not Logged in";
 
-//Google login, and sign out
+//Googl logins
 function googleSignin() {
    firebase.auth()
 
