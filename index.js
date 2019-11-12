@@ -17,6 +17,38 @@ var users = ["admin"];
 var passwords = ["bufflist"];
 var currentUser = "Not Logged in";
 
+//Google login, and sign out
+function googleSignin() {
+   firebase.auth()
+
+   .signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+
+      console.log(token)
+      console.log(user)
+   }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(error.code)
+      console.log(error.message)
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')
+   });
+}
+
+
+
+
 //Login to Buff List
 function check(form)
 {
@@ -102,7 +134,6 @@ function addPosting(title, image, description, price)
 }
 
 //load posts. Called once page is loaded
-<<<<<<< Updated upstream
 function loadPosts()
 {
 
@@ -157,8 +188,6 @@ function addPost()
     })
   })
 }
-=======
->>>>>>> Stashed changes
 
 
 
