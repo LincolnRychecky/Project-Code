@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+======
 //Firebase references
 // Get a reference to the storage service, which is used to create references in your storage bucket
 var storage = firebase.storage();
@@ -7,6 +9,8 @@ var database = firebase.database();
 var storageRef = storage.ref();
 //Create Firestore reference
 var db = firebase.firestore();
+
+var provider = new firebase.auth.GoogleAuthProvider();
 
 //login
 
