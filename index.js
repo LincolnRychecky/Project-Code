@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 //Firebase references
 // Get a reference to the storage service, which is used to create references in your storage bucket
 var storage = firebase.storage();
@@ -42,6 +44,7 @@ function createAccount(){
 
 
 
+>>>>>>> master
 //Load and add Postings
 
 // Saved postings
@@ -102,6 +105,7 @@ function addPosting(title, image, description, price)
 }
 
 //load posts. Called once page is loaded
+<<<<<<< Updated upstream
 function loadPosts()
 {
 
@@ -156,6 +160,8 @@ function addPost()
     })
   })
 }
+=======
+>>>>>>> Stashed changes
 
 
 

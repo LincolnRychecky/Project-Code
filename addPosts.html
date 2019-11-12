@@ -18,10 +18,11 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- User JavaScript -->
-  <script language="JavaScript" type="text/javascript" src="index.js"></script>
+  <!---<script language="JavaScript" type="text/javascript" src="index.js"></script> -->
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
+<body>
 <header>
   <div id="cuImage-1">
     <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
@@ -86,10 +87,10 @@
   <a class="navbar-brand" href="#"> <img src="assets/logo.png" id="logo"/></a>
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item active">
-      <a class="nav-link" href="#"> Sell <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="index.html"> Sell <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> Event Calendar </a>
+      <a class="nav-link" href="eventCalendar.html"> Event Calendar </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#"> My Account </a>
@@ -105,92 +106,109 @@
   </form>
 </div>
 </nav>
-<body>
-<!--Firebase-->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-
-firestore(app?: App): Firestore
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-    authDomain: "buff-list.firebaseapp.com",
-    databaseURL: "https://buff-list.firebaseio.com",
-    projectId: "buff-list",
-    storageBucket: "buff-list.appspot.com",
-    messagingSenderId: "562024677329",
-    appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-    measurementId: "G-0LYL9PHLCC"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
-<!--Form-->
-<div class="container">
-  <br />
-  <h1>Add a posting</h1>
-  <form>
-    <div class="form-group">
-      <label>Posting Headline</label>
-      <input type="text" name="headline1" class="form-control" placeholder="Headline">
-    </div>
-    <div class="form-group">
-      <label>Item Description</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
-    </div>
-    <div class="form-group row">
-      <div class="col">
-        <div class="form-group">
-          <label>Select Tags Related to Posting</label>
-          <br />
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Python">
-            <label class="form-check-label" for="inlineCheckbox1">Sports</label>
+  <!--Form-->
+  <div class="container">
+    <br />
+    <h1>Add a posting</h1>
+    <form>
+      <div class="row">
+        <div class="form-group col" id="headline2">
+          <label>Posting Headline</label>
+          <input type="text" class="form-control" placeholder="This is the Headline potential buyers will see">
+        </div>
+        <div class="form-group col" id="price">
+          <label>Price</label>
+          <input type="nuber" class="form-control" placeholder="Enter your item's price">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Item Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+      </div>
+      <div class="form-group row">
+        <div class="col">
+          <div class="form-group">
+            <label>Select Tags Related to Posting</label>
+            <br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Python">
+              <label class="form-check-label" for="inlineCheckbox1">Sports</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="C++">
+              <label class="form-check-label" for="inlineCheckbox2">Electronics</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Java">
+              <label class="form-check-label" for="inlineCheckbox3">Instrument</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Scala">
+              <label class="form-check-label" for="inlineCheckbox3">Furniture</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Perl">
+              <label class="form-check-label" for="inlineCheckbox3">Other</label>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="C++">
-            <label class="form-check-label" for="inlineCheckbox2">Electronics</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Java">
-            <label class="form-check-label" for="inlineCheckbox3">Instrument</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Scala">
-            <label class="form-check-label" for="inlineCheckbox3">Furniture</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Perl">
-            <label class="form-check-label" for="inlineCheckbox3">Other</label>
+        </div>
+        <div class="col">
+          <div class="file-field">
+            <label>Upload Images:</label>
+            <br />
+            <div class="btn btn-sm">
+              <input type="file">
+            </div>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="file-field">
-          <label>Upload Images:</label>
-          <br />
-          <div class="btn btn-sm">
-            <input type="file">
-          </div>
-        </div>
+      <div class="form-group">
+        <button id="submitBtn" onclick="submitClick()">Submit</button>
       </div>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-submit">Submit</button>
-    </div>
-  </form>
+    </form>
 
-</div>
+  </div>
+  <!-- Footer -->
+    <footer>
+      <div id="cuImage-1">
+        <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
+      </div>
+      <div id="cuImage-2">
+        <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
+      </div>
+    </footer>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <!-- The Firebase analytics SDK -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+  <!-- The core Firebase realtime database SDK -->
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+      authDomain: "buff-list.firebaseapp.com",
+      databaseURL: "https://buff-list.firebaseio.com",
+      projectId: "buff-list",
+      storageBucket: "buff-list.appspot.com",
+      messagingSenderId: "562024677329",
+      appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+      measurementId: "G-0LYL9PHLCC"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script>
+  function submitClick(){
+    window.alert("Hello");
+    var firebaseRef = firebase.database().ref();
 
+    firebaseRef.child("Text").set("Some Value");
 
+  }
 
-
-
+  </script>
 
 </body>
 </html>

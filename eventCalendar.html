@@ -16,49 +16,94 @@
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-  <body onload="loadPosts">
-      <header>
-<!-- CU Brand Header -->
+  <body>
+        <header>
           <div id="cuImage-1">
             <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
           </div>
           <div id="cuImage-2">
             <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
           </div>
-      </header>
-    </div>
-    <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#"><img src="assets/logo.png" id="logo"/></a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html"> Sell <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="eventCalendar.html"> Event Calendar </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> My Account </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> About Us </a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
-        </form>
-      </div>
-    </nav>
+            <!-- Button trigger modal -->
+            <div id="login" data-toggle="modal" data-target="#ModalCenter"><div id="user"></div>Login<br>Sign up</div>
+            <!-- Modal -->
+            <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLongTitle">Welcome to Buff List!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Sign Up Form -->
+                      <form>
+                        <h5>Sign Up</h5>
+                        <div class="form-group">
+                          <input type="name" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                          <small id="emailHelp" class="form-text text-muted">Must be at least 6 characters long.</small>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="SignUp">Sign up</button>
+                      </form>
+                      <br>
+                    <!-- Login Form -->
+                      <form>
+                        <h5>Login</h5>
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="Login">Login</button>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#"> <img src="assets/logo.png" id="logo"/></a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html"> Sell <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="eventCalendar.html"> Event Calendar </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> My Account </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="aboutus.html"> About Us </a>
+              </li>
+            </ul>
+            <a href="addPosts.html" class="btn btn-success">Add a post</a>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" id="searchText" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
+            </form>
+          </div>
+        </nav>
 <!-- Event Calendar -->
-<p> </p>
-<iframe src="https://calendar.google.com/calendar/embed?src=colorado.edu_8j6helolqm313i5t3e77nq5s20%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<div class="container">
+  <iframe src="https://calendar.google.com/calendar/embed?src=colorado.edu_8j6helolqm313i5t3e77nq5s20%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="1100" height="1000" frameborder="0" scrolling="no"></iframe>
+</div>
 <!-- class="d-block w-100" -->
-
 
   </body>
 </html>
