@@ -13,13 +13,10 @@ var firebaseConfig = {
 //Firebase references
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 // Get a reference to the storage service, which is used to create references in your storage bucket
-var storage = firebase.storage();
+//var storage = firebase.storage();
 //Get reference to database service
-var database = firebase.database();
-// Create a storage reference from our storage service
-var storageRef = storage.ref();
+//var storageRef = storage.ref();
 //Create Firestore reference
 var db = firebase.firestore();
 
@@ -191,7 +188,7 @@ function loadPosts()
 
 }
 
-//add a post to the firebase
+// add a post to the firebase
 // function addPost()
 // {
 //   form.addEventListener('submit', (e) =>{
@@ -204,25 +201,17 @@ function loadPosts()
 // }
 
 function submitClick(){
-window.alert("Hello");
-var firebaseRef = firebase.db().ref();
-
-firebaseRef.child("Text").set("Some Value");
-
+    console.log(db);
+    db.collection('Tester').add({
+      Header: document.getElementById('post_headline').value
+    })
+    .then(function(docRef){
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error){
+      console.error("error adding document ", error);
+    });
 }
-
-//add a post to the firestore
-document.getElementById("submitBtn").addEventListener("click", (e)=>{
-  window.alert("Hello");
-  // console.log("Hello World");
-  // e.preventDefault();
-  // db.collection('User Ratings').add({
-  //   Review: document.getElementById("post_headline").value;
-  //   Stars: document.getElementById("price").value;
-  // });
-  // getElementById("post_headline").value = '';
-  // getElementById("price").value = '';
-});
 
 
 
