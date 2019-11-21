@@ -190,7 +190,10 @@ function addPost()
 }
 
 
-
+function testPostData()
+{
+  db.collection("cities").doc("new-city-id").set(data);
+}
 
 
 
