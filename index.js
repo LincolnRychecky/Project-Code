@@ -1,10 +1,22 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+  authDomain: "buff-list.firebaseapp.com",
+  databaseURL: "https://buff-list.firebaseio.com",
+  projectId: "buff-list",
+  storageBucket: "buff-list.appspot.com",
+  messagingSenderId: "562024677329",
+  appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+  measurementId: "G-0LYL9PHLCC"
+};
+
 //Firebase references
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 // Get a reference to the storage service, which is used to create references in your storage bucket
-var storage = firebase.storage();
+//var storage = firebase.storage();
 //Get reference to database service
-var database = firebase.database();
-// Create a storage reference from our storage service
-var storageRef = storage.ref();
+//var storageRef = storage.ref();
 //Create Firestore reference
 var db = firebase.firestore();
 
@@ -75,7 +87,6 @@ function createAccount(){
 }
 
 //Load and add Postings
-
 // Saved postings
 var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
                 {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar", price: 300},
@@ -177,16 +188,29 @@ function loadPosts()
 
 }
 
-//add a post to the firebase
-function addPost()
-{
-  form.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    db.collection('posts').add({
+// add a post to the firebase
+// function addPost()
+// {
+//   form.addEventListener('submit', (e) =>{
+//     e.preventDefault();
+//     db.collection('posts').add({
+//
+//       Headline: form.headline1.value
+//     })
+//   })
+// }
 
-      Headline: form.headline1.value
+function submitClick(){
+    console.log(db);
+    db.collection('Tester').add({
+      Header: document.getElementById('post_headline').value
     })
-  })
+    .then(function(docRef){
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error){
+      console.error("error adding document ", error);
+    });
 }
 
 

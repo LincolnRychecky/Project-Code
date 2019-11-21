@@ -17,8 +17,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- User JavaScript -->
-  <!---<script language="JavaScript" type="text/javascript" src="index.js"></script> -->
+  <!-- Firebase -->
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+
+    <!-- <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+        authDomain: "buff-list.firebaseapp.com",
+        databaseURL: "https://buff-list.firebaseio.com",
+        projectId: "buff-list",
+        storageBucket: "buff-list.appspot.com",
+        messagingSenderId: "562024677329",
+        appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+        measurementId: "G-0LYL9PHLCC"
+    };
+    <!-- User JavaScript -->
+    <!-- </script> --> -->
+    <script language="JavaScript" type="text/javascript" src="index.js"></script>
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
@@ -112,13 +132,13 @@
     <h1>Add a posting</h1>
     <form>
       <div class="row">
-        <div class="form-group col" id="headline2">
+        <div class="form-group col">
           <label>Posting Headline</label>
-          <input type="text" class="form-control" placeholder="This is the Headline potential buyers will see">
+          <input type="text" class="form-control" id="post_headline" placeholder="This is the Headline potential buyers will see">
         </div>
         <div class="form-group col" id="price">
           <label>Price</label>
-          <input type="nuber" class="form-control" placeholder="Enter your item's price">
+          <input type="text" class="form-control" placeholder="Enter your item's price">
         </div>
       </div>
       <div class="form-group">
@@ -177,38 +197,5 @@
         <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
       </div>
     </footer>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-  <!-- The Firebase analytics SDK -->
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-  <!-- The core Firebase realtime database SDK -->
-  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-      authDomain: "buff-list.firebaseapp.com",
-      databaseURL: "https://buff-list.firebaseio.com",
-      projectId: "buff-list",
-      storageBucket: "buff-list.appspot.com",
-      messagingSenderId: "562024677329",
-      appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-      measurementId: "G-0LYL9PHLCC"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
-  <script>
-  function submitClick(){
-    window.alert("Hello");
-    var firebaseRef = firebase.database().ref();
-
-    firebaseRef.child("Text").set("Some Value");
-
-  }
-
-  </script>
-
 </body>
 </html>
