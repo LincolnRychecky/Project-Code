@@ -1,90 +1,100 @@
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-  authDomain: "buff-list.firebaseapp.com",
-  databaseURL: "https://buff-list.firebaseio.com",
-  projectId: "buff-list",
-  storageBucket: "buff-list.appspot.com",
-  messagingSenderId: "562024677329",
-  appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-  measurementId: "G-0LYL9PHLCC"
-};
+// Get a reference to the database 
+var database = firebase.firestore();
 
-//Firebase references
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// Get a reference to the storage service, which is used to create references in your storage bucket
-//var storage = firebase.storage();
-//Get reference to database service
-//var storageRef = storage.ref();
-//Create Firestore reference
-var db = firebase.firestore();
+// Create a storage reference from our database
+var docRef = database.collection("posts");
 
+//create instance of the Google provider instance
 var provider = new firebase.auth.GoogleAuthProvider();
 
-//login
+//user status div
+var user_info = document.getElementById("user_status");
 
-//saved user logins
-var users = ["admin"];
-var passwords = ["bufflist"];
-var currentUser = "Not Logged in";
+//current user
+var current_user = null;
 
-//Googl logins
-function googleSignin() {
-   firebase.auth()
 
-   .signInWithPopup(provider).then(function(result) {
+function authenticate(){
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    if (result.credential) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
-      var user = result.user;
-
-      console.log(token)
-      console.log(user)
-   }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log(error.code)
-      console.log(error.message)
-   });
-}
-
-function googleSignout() {
-   firebase.auth().signOut()
-
-   .then(function() {
-      console.log('Signout Succesfull')
-   }, function(error) {
-      console.log('Signout Failed')
-   });
-}
-
-
-
-
-//Login to Buff List
-function check(form)
-{
-  for(var i = 0; i < users.length; i++){
-    //if the pair is located in the users and passwords arrays
-    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
-      currentUser = users[i];
-      alert("Hello, " + currentUser + " welcome back to Buff List.")
-      return
     }
-  }
-    alert("Either your username or password is incorrect")
-    return
+    else {
+      //google sign-in redirect
+      firebase.auth().signInWithPopup(provider);
+    }
+    // The signed-in user info
+    current_user = result.user;
+    // Hide sign in
+    document.getElementById("signin").style.visibility = "hidden";
+    document.getElementById("signout").style.visibility = "visible";
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    console.log("Sign in error");
+  });
 }
-//Log off of Buff List
-function logOff(){
-currentUser = "Not Logged in";
-return
 
+function signOut(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful
+    current_user = null;
+    user_info.innerHTML = "";
+    document.getElementById("signin").style.visibility = "visible";
+    document.getElementById("signout").style.visibility = "hidden";
+  }).catch(function(error) {
+    // An error happened
+    console.log("Sign out error");
+  });
 }
-//Create an Account
-function createAccount(){
 
-}
+//setting an event listener for change of authentication state
+firebase.auth().onAuthStateChanged(function(user) {
+  current_user=user;
+  if (user) {
+      // User is signed in
+    user_info.innerHTML = "Welcome, " + user.displayName;
+    } else {
+      // No user is signed in
+    user_info.innerHTML = "";
+    }
+});
+
+document.getElementById("signin").addEventListener("click", authenticate);
+document.getElementById("signout").addEventListener("click", signOut);
+
+// //Login to Buff List
+// function check(form)
+// {
+//   for(var i = 0; i < users.length; i++){
+//     //if the pair is located in the users and passwords arrays
+//     if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
+//       currentUser = users[i];
+//       alert("Hello, " + currentUser + " welcome back to Buff List.")
+//       return
+//     }
+//   }
+//     alert("Either your username or password is incorrect")
+//     return
+// }
+// //Log off of Buff List
+// function logOff(){
+// currentUser = "Not Logged in";
+// return
+
+// }
+// //Create an Account
+// function createAccount(){
+
+// }
+
+
 
 //Load and add Postings
 // Saved postings
@@ -149,7 +159,7 @@ function loadPosts()
 {
 
   //Try for firestore
-  db.collection("PostingDataRetrievalTest").doc("PostingData")
+  database.collection("PostingDataRetrievalTest").doc("PostingData")
   .get()
   .then(function(doc) {
     if (doc.exists) {
@@ -170,21 +180,21 @@ function loadPosts()
     console.log("Error getting document:", error);
   });
 
-  //only works with realtime database
-  database.ref().on("value", function(snapshot) {
-    snapshot.forEach(function(childNodes){
-     var post = snapshot.val().PostingDataRetrievalTest.PostingData;
-     var title = post.Title;
-     var description = post.Description;
-     var price = post.Price;
-     var image = post.image;
-     var testPost = addPosting(title, image, description, price);
-     document.getElementById('postings').appendChild(testPost);
-   });
+  // //only works with realtime database
+  // database.ref().on("value", function(snapshot) {
+  //   snapshot.forEach(function(childNodes){
+  //    var post = snapshot.val().PostingDataRetrievalTest.PostingData;
+  //    var title = post.Title;
+  //    var description = post.Description;
+  //    var price = post.Price;
+  //    var image = post.image;
+  //    var testPost = addPosting(title, image, description, price);
+  //    document.getElementById('postings').appendChild(testPost);
+  //  });
 
-  }, function (error) {
-     console.log("Error: " + error.code);
-  });
+  // }, function (error) {
+  //    console.log("Error: " + error.code);
+  // });
 
 }
 
@@ -201,8 +211,8 @@ function loadPosts()
 // }
 
 function submitClick(){
-    console.log(db);
-    db.collection('Tester').add({
+    console.log(database);
+    database.collection('Tester').add({
       Header: document.getElementById('post_headline').value
     })
     .then(function(docRef){
@@ -216,7 +226,7 @@ function submitClick(){
 
 function testPostData()
 {
-  db.collection("cities").doc("new-city-id").set(data);
+  database.collection("cities").doc("new-city-id").set(data);
 }
 
 
