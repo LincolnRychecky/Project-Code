@@ -31,9 +31,7 @@ var currentUser = "Not Logged in";
 
 //Googl logins
 function googleSignin() {
-   firebase.auth()
-
-   .signInWithPopup(provider).then(function(result) {
+   firebase.auth().signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
 
@@ -170,22 +168,6 @@ function loadPosts()
     console.log("Error getting document:", error);
   });
 
-  //only works with realtime database
-  database.ref().on("value", function(snapshot) {
-    snapshot.forEach(function(childNodes){
-     var post = snapshot.val().PostingDataRetrievalTest.PostingData;
-     var title = post.Title;
-     var description = post.Description;
-     var price = post.Price;
-     var image = post.image;
-     var testPost = addPosting(title, image, description, price);
-     document.getElementById('postings').appendChild(testPost);
-   });
-
-  }, function (error) {
-     console.log("Error: " + error.code);
-  });
-
 }
 
 // add a post to the firebase
@@ -202,7 +184,8 @@ function loadPosts()
 
 function submitClick(){
     console.log(db);
-    db.collection('Tester').add({
+    console.log(db.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj"));
+    db.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj").set({
       Header: document.getElementById('post_headline').value
     })
     .then(function(docRef){
@@ -218,20 +201,3 @@ function testPostData()
 {
   db.collection("cities").doc("new-city-id").set(data);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //JQuery for popup window
-// $(document).ready(function() {
-//  $('.expandImage').magnificPopup({type:'image', delegate: 'anchor'});
-// });
