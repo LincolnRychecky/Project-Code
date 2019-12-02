@@ -1,3 +1,16 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+    authDomain: "buff-list.firebaseapp.com",
+    databaseURL: "https://buff-list.firebaseio.com",
+    projectId: "buff-list",
+    storageBucket: "buff-list.appspot.com",
+    messagingSenderId: "562024677329",
+    appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+    measurementId: "G-0LYL9PHLCC"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 // Get a reference to the database
 var database = firebase.firestore();
 
@@ -195,8 +208,8 @@ function loadPosts()
 // }
 
 function submitClick(){
-    console.log(db);
-    console.log(db.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj"));
+    console.log(database);
+    console.log(database.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj"));
     db.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj").set({
       Header: document.getElementById('post_headline').value
     })
