@@ -159,10 +159,14 @@ function loadPosts()
 {
 
   //Try for firestore
-  database.collection("PostingDataRetrievalTest").doc("PostingData")
-  .get()
-  .then(function(doc) {
-    if (doc.exists) {
+  //Each posting will be a document in the database
+
+  //Steps:
+  //get all document names into array.
+  //iterate through array of document names, and get title, description, price, and image
+  database.collection("PostingDataRetrievalTest").doc("PostingData").get().then(function(doc){
+    if(doc.exists)
+    {
       console.log("Document data:", doc.data());
       var post = doc.data();
       var title = post.Title;
@@ -172,7 +176,9 @@ function loadPosts()
       var testPost = addPosting(title, image, description, price);
       document.getElementById('postings').appendChild(testPost);
       console.log(doc.data().Price);
-    } else {
+    }
+    else
+    {
       // doc.data() will be undefined in this case
       console.log("No such document!");
     }
