@@ -108,25 +108,8 @@ document.getElementById("signout").addEventListener("click", signOut);
 // }
 
 
-
-//Load and add Postings
-// Saved postings
-var storedCards = [{title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-                {title: "Guitar", image: "assets/example2.jpg", description: "Used Electric Guitar", price: 300},
-                {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
-              {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
-            {title: "Skis", image: "assets/example3.jpg", description: "Used Skis", price: 190},
-          {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-        {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-      {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-      {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-    {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-    {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-  {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80},
-  {title: "TV", image: "assets/example1.jpg", description: "Used 32 in Plasma tv", price: 80}];
-
 //Add post function
-function addPosting(title, image, description, price)
+function addPosting(title, image, description, price, information)
 {
 
   //ADD DROPDOWNMENU WITH CONTACT INFORMATION OF USER WHO POSTED ITEM
@@ -134,6 +117,7 @@ function addPosting(title, image, description, price)
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
+  card.class = 'collapse';
 
   //Add card body
   let cardBody = document.createElement('div');
@@ -164,39 +148,42 @@ function addPosting(title, image, description, price)
   desc.innerText = description;
   cardBody.appendChild(desc);
 
+  //Add user contact info
+  // <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  //   Button with data-target
+  // </button>
+  let info = document.createElement('p');
+  card.appendChild(info);
+  info.innerText = information;
+  cardBody.appendChild(info);
+
   return card;
 }
 
 //load posts. Called once page is loaded
 function loadPosts()
 {
-
-  //Try for firestore
   //Each posting will be a document in the database
-
   //Steps:
   //get all document names into array.
   //iterate through array of document names, and get title, description, price, and image
-  database.collection("PostingDataRetrievalTest").doc("PostingData").get().then(function(doc){
+
+  database.collection("Tester").get().then(function(querySnapshot)
+  {querySnapshot.forEach(function(doc){
     if(doc.exists)
     {
       console.log("Document data:", doc.data());
       var post = doc.data();
-      var title = post.Title;
-      var description = post.Description;
-      var price = post.Price;
-      var image = post.Image;
-      var testPost = addPosting(title, image, description, price);
+      var title = post.title;
+      var description = post.description;
+      var price = post.price;
+      var image = post.image;
+      var info = post.contact;
+      var testPost = addPosting(title, image, description, price, info);
       document.getElementById('postings').appendChild(testPost);
-      console.log(doc.data().Price);
     }
-    else
-    {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  }).catch(function(error) {
-    console.log("Error getting document:", error);
+
+    });
   });
 
 }
