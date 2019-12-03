@@ -1,21 +1,9 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-    authDomain: "buff-list.firebaseapp.com",
-    databaseURL: "https://buff-list.firebaseio.com",
-    projectId: "buff-list",
-    storageBucket: "buff-list.appspot.com",
-    messagingSenderId: "562024677329",
-    appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-    measurementId: "G-0LYL9PHLCC"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the database
 var database = firebase.firestore();
 
 // Create a storage reference from our database
-var docRef = database.collection("posts");
+var docRef = database.collection("Tester");
 
 //create instance of the Google provider instance
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -27,60 +15,60 @@ var user_info = document.getElementById("user_status");
 var current_user = null;
 
 
-function authenticate(){
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    if (result.credential) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-    }
-    else {
-      //google sign-in redirect
-      firebase.auth().signInWithPopup(provider);
-    }
-    // The signed-in user info
-    current_user = result.user;
-    // Hide sign in
-    document.getElementById("signin").style.visibility = "hidden";
-    document.getElementById("signout").style.visibility = "visible";
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    console.log("Sign in error");
-  });
-}
+// function authenticate(){
+//   firebase.auth().signInWithPopup(provider).then(function(result) {
+//     if (result.credential) {
+//       // This gives you a Google Access Token. You can use it to access the Google API.
+//       var token = result.credential.accessToken;
+//     }
+//     else {
+//       //google sign-in redirect
+//       firebase.auth().signInWithPopup(provider);
+//     }
+//     // The signed-in user info
+//     current_user = result.user;
+//     // Hide sign in
+//     document.getElementById("signin").style.visibility = "hidden";
+//     document.getElementById("signout").style.visibility = "visible";
+//   }).catch(function(error) {
+//     // Handle Errors here.
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     // The email of the user's account used.
+//     var email = error.email;
+//     // The firebase.auth.AuthCredential type that was used.
+//     var credential = error.credential;
+//     console.log("Sign in error");
+//   });
+// }
+//
+// function signOut(){
+//   firebase.auth().signOut().then(function() {
+//     // Sign-out successful
+//     current_user = null;
+//     user_info.innerHTML = "";
+//     document.getElementById("signin").style.visibility = "visible";
+//     document.getElementById("signout").style.visibility = "hidden";
+//   }).catch(function(error) {
+//     // An error happened
+//     console.log("Sign out error");
+//   });
+// }
+//
+// //setting an event listener for change of authentication state
+// firebase.auth().onAuthStateChanged(function(user) {
+//   current_user=user;
+//   if (user) {
+//       // User is signed in
+//     user_info.innerHTML = "Welcome, " + user.displayName;
+//     } else {
+//       // No user is signed in
+//     user_info.innerHTML = "";
+//     }
+// });
 
-function signOut(){
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful
-    current_user = null;
-    user_info.innerHTML = "";
-    document.getElementById("signin").style.visibility = "visible";
-    document.getElementById("signout").style.visibility = "hidden";
-  }).catch(function(error) {
-    // An error happened
-    console.log("Sign out error");
-  });
-}
-
-//setting an event listener for change of authentication state
-firebase.auth().onAuthStateChanged(function(user) {
-  current_user=user;
-  if (user) {
-      // User is signed in
-    user_info.innerHTML = "Welcome, " + user.displayName;
-    } else {
-      // No user is signed in
-    user_info.innerHTML = "";
-    }
-});
-
-document.getElementById("signin").addEventListener("click", authenticate);
-document.getElementById("signout").addEventListener("click", signOut);
+// document.getElementById("signin").addEventListener("click", authenticate);
+// document.getElementById("signout").addEventListener("click", signOut);
 
 // //Login to Buff List
 // function check(form)
@@ -201,34 +189,18 @@ function loadPosts()
 
 }
 
-// add a post to the firebase
-// function addPost()
-// {
-//   form.addEventListener('submit', (e) =>{
-//     e.preventDefault();
-//     db.collection('posts').add({
-//
-//       Headline: form.headline1.value
-//     })
-//   })
-// }
-
 function submitClick(){
-    console.log(database);
-    console.log(database.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj"));
-    db.collection('Tester').doc("arJd3lG6nw4Hg4wOfGYj").set({
-      Header: document.getElementById('post_headline').value
+    database.collection("Tester").add({
+        contact: "Lincoln@gmail.com",
+        description: "Guitar",
+        image: "https://firebasestorage.googleapis.com/v0/b/buff-list.appspot.com/o/example2.jpg?alt=media&token=61be939f-ac57-410b-bf11-a887820bf442",
+        price: 100,
+        title: "Blue Guitar"
     })
-    .then(function(docRef){
-      console.log("Document written with ID: ", docRef.id);
+    .then(function() {
+        console.log("Document successfully written!");
     })
-    .catch(function(error){
-      console.error("error adding document ", error);
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
     });
-}
-
-
-function testPostData()
-{
-  database.collection("cities").doc("new-city-id").set(data);
 }

@@ -23,22 +23,8 @@
   <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 
-
-    <!-- <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-        authDomain: "buff-list.firebaseapp.com",
-        databaseURL: "https://buff-list.firebaseio.com",
-        projectId: "buff-list",
-        storageBucket: "buff-list.appspot.com",
-        messagingSenderId: "562024677329",
-        appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-        measurementId: "G-0LYL9PHLCC"
-    };
-     User JavaScript -->
-    <!-- </script> -->
-    <script language="JavaScript" type="text/javascript" src="index.js"></script>
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
@@ -51,11 +37,11 @@
     <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
   </div>
   <!-- Button to trigger google authentication function -->
-  <div id="user_authenticate">
+  <!-- <div id="user_authenticate">
     <span id="user_status"> </span>
     <button type="button" id="signin">Sign In / Log In</button>
-    <button type="button" id="signout">Sign Out</button>  
-  </div>
+    <button type="button" id="signout">Sign Out</button>
+  </div> -->
 </header>
 <!-- Navbar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
@@ -142,7 +128,7 @@
         </div>
       </div>
       <div class="form-group">
-        <button id="submitBtn" onclick="submitClick()">Submit</button>
+        <button id="submitBtn" type = "button" onclick="submitClick()">Submit</button>
       </div>
     </form>
 
@@ -156,5 +142,20 @@
         <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
       </div>
     </footer>
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+        authDomain: "buff-list.firebaseapp.com",
+        databaseURL: "https://buff-list.firebaseio.com",
+        projectId: "buff-list",
+        storageBucket: "buff-list.appspot.com",
+        messagingSenderId: "562024677329",
+        appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+        measurementId: "G-0LYL9PHLCC"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
