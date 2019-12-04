@@ -210,7 +210,7 @@ function search(num){
   if(num == 0){//Sports
 
     //var query = data.where("title", "==", "Red Guitar");
-    database.collection('Tester').where("tag", "==", "0")
+    database.collection('Tester').where("tag", "==", "Sports")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -222,9 +222,9 @@ function search(num){
         console.log("Error getting documents: ", error);
     });
     console.log("Sports");
-  }else if(tag_info == 1){//Electronics
+  }else if(num == 1){//Electronics
     console.log("Electronics");
-    database.collection('Tester').where("tag", "==", "1")
+    database.collection('Tester').where("tag", "==", "Electronics")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -236,7 +236,8 @@ function search(num){
         console.log("Error getting documents: ", error);
     });
   }else if(num == 2){//Instruments
-    database.collection('Tester').where("tag", "==", "2")
+    console.log("Instruments");
+    database.collection('Tester').where("tag", "==", "Instruments")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -250,7 +251,7 @@ function search(num){
 
   }else if(num == 3){//Furniture
     console.log("Furniture");
-    database.collection('Tester').where("tag", "==", "3")
+    database.collection('Tester').where("tag", "==", "Furniture")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -263,7 +264,7 @@ function search(num){
     });
   }else if (num == 4){//Other
     console.log("Other");
-    database.collection('Tester').where("tag", "==", "4")
+    database.collection('Tester').where("tag", "==", "Other")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
