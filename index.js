@@ -189,11 +189,16 @@ function loadPosts()
 
 function submitClick(){
     database.collection("Tester").add({
-        contact: "Lincoln@gmail.com",
-        description: "Guitar",
+        contact: document.getElementById("ContactInfo").value,
+        description: document.getElementById("Textarea1").value,
         image: "https://firebasestorage.googleapis.com/v0/b/buff-list.appspot.com/o/example2.jpg?alt=media&token=61be939f-ac57-410b-bf11-a887820bf442",
-        price: 100,
-        title: "Blue Guitar"
+        price: document.getElementById("Price").value,
+        title: document.getElementById("Headline1").value,
+        electronics: document.getElementById("inlineCheckbox1").checked,
+        furniture: document.getElementById("inlineCheckbox2").checked,
+        instrument: document.getElementById("inlineCheckbox3").checked,
+        other: document.getElementById("inlineCheckbox4").checked,
+        sports: document.getElementById("inlineCheckbox5").checked
     })
     .then(function() {
         console.log("Document successfully written!");
