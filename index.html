@@ -74,9 +74,19 @@
     </ul>
     <a href="addPosts.html" class="btn btn-success">Add a post</a>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" id="searchText" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
-    </form>
+  <div class="dropdown">
+    <div class="divider"/>
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ Search
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" type = "button" href="#" onclick="search(0)">Sports</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(1)">Electronics</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(2)">Instruments</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(3)">Furniture</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(4)">Other</button>
+</div>
+<div class="divider"/>
   </div>
 </nav>
 <!-- Postings -->
