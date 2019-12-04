@@ -219,3 +219,8 @@ function testPostData()
 {
   database.collection("cities").doc("new-city-id").set(data);
 }
+
+
+// Draft Firestore Query for Search
+var data = db.collection('Tester');
+var query = data.where("tag", "==", "2");
