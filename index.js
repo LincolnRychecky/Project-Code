@@ -222,5 +222,20 @@ function testPostData()
 
 
 // Draft Firestore Query for Search
-var data = db.collection('Tester');
-var query = data.where("tag", "==", "2");
+function search(){
+  var tag_info = document.getElementById('searchText');
+  var data = db.collection('Tester');
+  if(tag_info == 0){//Sports
+    var query = data.where("tag", "==", "0");
+  }else if(tag_info == 1){//Electronics
+    var query = data.where("tag", "==", "1");
+  }else if(tag_info == 2){//Instruments
+    var query = data.where("tag", "==", "2");
+  }else if(tag_info == 3){//Furniture
+    var query = data.where("tag", "==", "3");
+  }else if (tag_info == 4){//Other
+    var query = data.where("tag", "==", "4");
+  }
+
+
+}
