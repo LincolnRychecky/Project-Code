@@ -17,6 +17,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
   <!-- Firebase -->
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -25,10 +26,13 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 
+=======
+  <!-- User JavaScript -->
+  <script language="JavaScript" type="text/javascript" src="index.js"></script>
+>>>>>>> master
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<body>
 <header>
   <div id="cuImage-1">
     <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
@@ -36,12 +40,62 @@
   <div id="cuImage-2">
     <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
   </div>
+<<<<<<< HEAD
   <!-- Button to trigger google authentication function -->
   <!-- <div id="user_authenticate">
     <span id="user_status"> </span>
     <button type="button" id="signin">Sign In / Log In</button>
     <button type="button" id="signout">Sign Out</button>
   </div> -->
+=======
+    <!-- Button trigger modal -->
+    <div id="login" data-toggle="modal" data-target="#ModalCenter"><div id="user"></div>Login<br>Sign up</div>
+    <!-- Modal -->
+    <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLongTitle">Welcome to Buff List!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Sign Up Form -->
+              <form>
+                <h5>Sign Up</h5>
+                <div class="form-group">
+                  <input type="name" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                  <small id="emailHelp" class="form-text text-muted">Must be at least 6 characters long.</small>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="SignUp">Sign up</button>
+              </form>
+              <br>
+            <!-- Login Form -->
+              <form>
+                <h5>Login</h5>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-outline-dark" onclick="check(this.form)" value="Login">Login</button>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+>>>>>>> master
 </header>
 <!-- Navbar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
@@ -52,10 +106,10 @@
   <a class="navbar-brand" href="#"> <img src="assets/logo.png" id="logo"/></a>
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item active">
-      <a class="nav-link" href="index.html"> Sell <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#"> Sell <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="eventCalendar.html"> Event Calendar </a>
+      <a class="nav-link" href="#"> Event Calendar </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#"> My Account </a>
@@ -71,67 +125,99 @@
   </form>
 </div>
 </nav>
-  <!--Form-->
-  <div class="container">
-    <br />
-    <h1>Add a posting</h1>
-    <form>
-      <div class="row">
-        <div class="form-group col">
-          <label>Posting Headline</label>
-          <input type="text" class="form-control" id="post_headline" placeholder="This is the Headline potential buyers will see">
-        </div>
-        <div class="form-group col" id="price">
-          <label>Price</label>
-          <input type="text" class="form-control" placeholder="Enter your item's price">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Item Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
-      </div>
-      <div class="form-group row">
-        <div class="col">
-          <div class="form-group">
-            <label>Select Tags Related to Posting</label>
-            <br />
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Python">
-              <label class="form-check-label" for="inlineCheckbox1">Sports</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="C++">
-              <label class="form-check-label" for="inlineCheckbox2">Electronics</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Java">
-              <label class="form-check-label" for="inlineCheckbox3">Instrument</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Scala">
-              <label class="form-check-label" for="inlineCheckbox3">Furniture</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Perl">
-              <label class="form-check-label" for="inlineCheckbox3">Other</label>
-            </div>
+<body>
+<!--Firebase-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+firestore(app?: App): Firestore
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+    authDomain: "buff-list.firebaseapp.com",
+    databaseURL: "https://buff-list.firebaseio.com",
+    projectId: "buff-list",
+    storageBucket: "buff-list.appspot.com",
+    messagingSenderId: "562024677329",
+    appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+    measurementId: "G-0LYL9PHLCC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<!--Form-->
+<div class="container">
+  <br />
+  <h1>Add a posting</h1>
+  <form>
+    <div class="form-group">
+      <label>Posting Headline</label>
+      <input type="text" name="headline1" class="form-control" placeholder="Headline">
+    </div>
+    <div class="form-group">
+      <label>Item Description</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+    </div>
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group">
+          <label>Select Tags Related to Posting</label>
+          <br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Python">
+            <label class="form-check-label" for="inlineCheckbox1">Sports</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="C++">
+            <label class="form-check-label" for="inlineCheckbox2">Electronics</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Java">
+            <label class="form-check-label" for="inlineCheckbox3">Instrument</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Scala">
+            <label class="form-check-label" for="inlineCheckbox3">Furniture</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Perl">
+            <label class="form-check-label" for="inlineCheckbox3">Other</label>
           </div>
         </div>
-        <div class="col">
-          <div class="file-field">
-            <label>Upload Images:</label>
-            <br />
-            <div class="btn btn-sm">
-              <input type="file">
-            </div>
-          </div>
-        </div>
       </div>
+<<<<<<< HEAD
       <div class="form-group">
         <button id="submitBtn" type = "button" onclick="submitClick()">Submit</button>
+=======
+      <div class="col">
+        <div class="file-field">
+          <label>Upload Images:</label>
+          <br />
+          <div class="btn btn-sm">
+            <input type="file">
+          </div>
+        </div>
+>>>>>>> master
       </div>
-    </form>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-submit">Submit</button>
+    </div>
+  </form>
 
+</div>
+
+
+
+
+
+
+<<<<<<< HEAD
   </div>
   <!-- Footer -->
     <footer>
@@ -157,5 +243,7 @@
     firebase.initializeApp(firebaseConfig);
     </script>
     <script type="text/javascript" src="index.js"></script>
+=======
+>>>>>>> master
 </body>
 </html>
