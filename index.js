@@ -1,4 +1,15 @@
-
+var firebaseConfig = {
+    apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
+    authDomain: "buff-list.firebaseapp.com",
+    databaseURL: "https://buff-list.firebaseio.com",
+    projectId: "buff-list",
+    storageBucket: "buff-list.appspot.com",
+    messagingSenderId: "562024677329",
+    appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
+    measurementId: "G-0LYL9PHLCC"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 // Get a reference to the database
 var database = firebase.firestore();
 
@@ -191,32 +202,23 @@ function submitClick(){
         console.error("Error writing document: ", error);
     });
 }
-<<<<<<< HEAD
-=======
-
-
-function testPostData()
-{
-  database.collection("cities").doc("new-city-id").set(data);
-}
 
 
 // Draft Firestore Query for Search
-function search(){
-  var tag_info = document.getElementById('searchText');
-  var data = db.collection('Tester');
-  if(tag_info == 0){//Sports
-    var query = data.where("tag", "==", "0");
-  }else if(tag_info == 1){//Electronics
-    var query = data.where("tag", "==", "1");
-  }else if(tag_info == 2){//Instruments
-    var query = data.where("tag", "==", "2");
-  }else if(tag_info == 3){//Furniture
-    var query = data.where("tag", "==", "3");
-  }else if (tag_info == 4){//Other
-    var query = data.where("tag", "==", "4");
-  }
-
-
-}
->>>>>>> master
+// function search(){
+//   var tag_info = document.getElementById('searchText');
+//   var data = db.collection('Tester');
+//   if(tag_info == 0){//Sports
+//     var query = data.where("tag", "==", "0");
+//   }else if(tag_info == 1){//Electronics
+//     var query = data.where("tag", "==", "1");
+//   }else if(tag_info == 2){//Instruments
+//     var query = data.where("tag", "==", "2");
+//   }else if(tag_info == 3){//Furniture
+//     var query = data.where("tag", "==", "3");
+//   }else if (tag_info == 4){//Other
+//     var query = data.where("tag", "==", "4");
+//   }
+//
+//
+// }
