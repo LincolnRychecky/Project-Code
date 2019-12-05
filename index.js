@@ -360,5 +360,29 @@ function search(num){
         console.log("Error getting documents: ", error);
     });
   }
+}
 
+function myPosts(){
+  var data = database.collection("Tester");
+  var email = "bob@colorado.edu";
+  email = 
+    database.collection('Tester').where("contact", "==", email)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('myPosts').appendChild(testPost);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    console.log("Email");
 }
