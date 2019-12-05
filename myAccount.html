@@ -25,7 +25,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
-
+    <script type="text/javascript" src="index.js"></script>
+    <script>
+    myPosts();
+  </script>
   <!-- CSS Style sheet -->
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
@@ -101,13 +104,16 @@ hr.style6 {
   display:inline-block;
 }
 </style>
+<!--
 <div class="card">
   <h2>My Account</h2>
   <h5 class ="email" align="left"><font class ="email" color ="black">Email Address:</font></h5>
   <p>Student</p>
 </div>
-<hr class="style6">
+-->
 <h2 align='center'><font color = "white">My Posts</font></h2>
+<hr class="style6">
+<div id="myPosts" class ="card-columns"></div>
 <!--Postings-->
 
 <!-- Footer -->
@@ -120,6 +126,6 @@ hr.style6 {
     </div>
   </footer>
   <!-- User JavaScript -->
-  <script type="text/javascript" src="index.js"></script>
+  <!--<script type="text/javascript" src="index.js"></script>-->
   </body>
 </html>
