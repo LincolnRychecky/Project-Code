@@ -189,16 +189,46 @@ function loadPosts()
 
 function submitClick(){
     database.collection("Tester").add({
-        contact: document.getElementById("ContactInfo").value,
-        description: document.getElementById("Textarea1").value,
+        contact: "Lincoln@gmail.com",
+        description: "Guitar",
         image: "https://firebasestorage.googleapis.com/v0/b/buff-list.appspot.com/o/example2.jpg?alt=media&token=61be939f-ac57-410b-bf11-a887820bf442",
-        price: document.getElementById("Price").value,
-        title: document.getElementById("Headline1").value,
-        electronics: document.getElementById("inlineCheckbox1").checked,
-        furniture: document.getElementById("inlineCheckbox2").checked,
-        instrument: document.getElementById("inlineCheckbox3").checked,
-        other: document.getElementById("inlineCheckbox4").checked,
-        sports: document.getElementById("inlineCheckbox5").checked
+        price: 100,
+        title: "Blue Guitar"
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}
+function loadeventPosts()
+{
+
+  database.collection("EventCalendarTester").get().then(function(querySnapshot)
+  {querySnapshot.forEach(function(doc){
+    if(doc.exists)
+    {
+      console.log("Document data:", doc.data());
+      var post = doc.data();
+      var title = post.PostingHeadline;
+      var description = post.Description;
+      var meetingPlace = post.MeetingPlace;
+      var contact = post.Contact;
+      var testPost = addPosting(title, description, meetingPlace, contact, info);
+      document.getElementById('postings').appendChild(testPost);
+    }
+
+    });
+  });
+
+}
+function eventsubmitClick(){
+    database.collection("EventCaledarTester").add({
+        contact: document.getElementId("email").value,
+        Description: document.getElementId("eventDescription").value,
+        MeetingPlace: document.getElementId("place").value,
+        PostingHeadline: document.getElementId("headline").value,
     })
     .then(function() {
         console.log("Document successfully written!");
@@ -209,77 +239,21 @@ function submitClick(){
 }
 
 
-// Firestore Query for Search
-function search(num){
-  var data = database.collection("Tester");
-  if(num == 0){//Sports
-
-    //var query = data.where("title", "==", "Red Guitar");
-    database.collection('Tester').where("tag", "==", "Sports")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-    console.log("Sports");
-  }else if(num == 1){//Electronics
-    console.log("Electronics");
-    database.collection('Tester').where("tag", "==", "Electronics")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-  }else if(num == 2){//Instruments
-    console.log("Instruments");
-    database.collection('Tester').where("tag", "==", "Instruments")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-
-  }else if(num == 3){//Furniture
-    console.log("Furniture");
-    database.collection('Tester').where("tag", "==", "Furniture")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-  }else if (num == 4){//Other
-    console.log("Other");
-    database.collection('Tester').where("tag", "==", "Other")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-  }
-
-}
+// Draft Firestore Query for Search
+// function search(){
+//   var tag_info = document.getElementById('searchText');
+//   var data = db.collection('Tester');
+//   if(tag_info == 0){//Sports
+//     var query = data.where("tag", "==", "0");
+//   }else if(tag_info == 1){//Electronics
+//     var query = data.where("tag", "==", "1");
+//   }else if(tag_info == 2){//Instruments
+//     var query = data.where("tag", "==", "2");
+//   }else if(tag_info == 3){//Furniture
+//     var query = data.where("tag", "==", "3");
+//   }else if (tag_info == 4){//Other
+//     var query = data.where("tag", "==", "4");
+//   }
+//
+//
+// }
