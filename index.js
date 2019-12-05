@@ -18,9 +18,6 @@ var docRef = database.collection("Tester");
 
 //create instance of the Google provider instance
 var provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({
-    hd: "colorado.edu"
-});
 
 //user status div
 var user_info = document.getElementById("user_status");
@@ -113,6 +110,9 @@ var current_user = null;
 //Add post function
 function addPosting(title, image, description, price, information)
 {
+
+  //ADD DROPDOWNMENU WITH CONTACT INFORMATION OF USER WHO POSTED ITEM
+
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
@@ -178,7 +178,6 @@ function loadPosts()
       var price = post.price;
       var image = post.image;
       var info = post.contact;
-      //var tags = post.tags; //UNCOMMENT TO ADD TAGS *********************************************************************
       var testPost = addPosting(title, image, description, price, info);
       document.getElementById('postings').appendChild(testPost);
     }
@@ -216,6 +215,7 @@ function loadeventPosts()
       var description = post.Description;
       var meetingPlace = post.MeetingPlace;
       var contact = post.contact;
+      var date = post.date;
     }
 
     });
@@ -228,6 +228,7 @@ function eventsubmitClick(){
         Description: document.getElementById("eventDescription").value,
         MeetingPlace: document.getElementById("place").value,
         PostingHeadline: document.getElementById("headline").value,
+        date: document.getElementById("date").value,
     })
     .then(function() {
         console.log("Document successfully written!");
@@ -237,36 +238,6 @@ function eventsubmitClick(){
     });
 }
 
-function loadCarousel()
-{
-  //GET POSTS BASED ON TIMESTAMP, ONCE LINCOLN ADDS THAT TO DATABASE
-  var postsArray = [];
-  database.collection("Tester").get().then(function(querySnapshot)
-  {querySnapshot.forEach(function(doc){
-    if(doc.exists)
-    {
-      postsArray.push(doc.data());
-      //console.log("Document data:", Math.min(doc.data().timestamp));
-      // var post = doc.data();
-      // document.getElementById("image1").src = post.image;
-      // document.getElementById("price1").src = post.price;
-      // document.getElementById("description1").src = post.description;
-      //
-      // document.getElementById("image2").src = post.image;
-      // document.getElementById("price2").src = post.price;
-      // document.getElementById("description2").src = post.description;
-      //
-      // document.getElementById("image3").src = post.image;
-      // document.getElementById("price3").src = post.price;
-      // document.getElementById("description3").src = post.description;
-    }
-
-    });
-  });
-  console.log("Document data:", postsArray);
-  postsArray.sort((a, b) => (a.description > b.description) ? 1 : (a.description === b.description) ? ((a.price > b.price) ? 1 : -1) : -1 )
-  console.log("Document data:", postsArray);
-}
 
 // Draft Firestore Query for Search
 // function search(){
