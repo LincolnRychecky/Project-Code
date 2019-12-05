@@ -190,6 +190,37 @@ function loadPosts()
 
 }
 
+function loadCarousel()
+{
+  //GET POSTS BASED ON TIMESTAMP, ONCE LINCOLN ADDS THAT TO DATABASE
+  var postsArray = [];
+  database.collection("Tester").get().then(function(querySnapshot)
+  {querySnapshot.forEach(function(doc){
+    if(doc.exists)
+    {
+      postsArray.push(doc.data());
+      //console.log("Document data:", Math.min(doc.data().timestamp));
+      // var post = doc.data();
+      // document.getElementById("image1").src = post.image;
+      // document.getElementById("price1").src = post.price;
+      // document.getElementById("description1").src = post.description;
+      //
+      // document.getElementById("image2").src = post.image;
+      // document.getElementById("price2").src = post.price;
+      // document.getElementById("description2").src = post.description;
+      //
+      // document.getElementById("image3").src = post.image;
+      // document.getElementById("price3").src = post.price;
+      // document.getElementById("description3").src = post.description;
+    }
+
+    });
+  });
+  console.log("Document data:", postsArray);
+  postsArray.sort((a, b) => (a.description > b.description) ? 1 : (a.description === b.description) ? ((a.price > b.price) ? 1 : -1) : -1 )
+  console.log("Document data:", postsArray);
+}
+
 function submitClick(){
   var today = new Date();
     database.collection("Tester").add({
