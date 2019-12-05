@@ -29,60 +29,60 @@ var user_info = document.getElementById("user_status");
 var current_user = null;
 
 
-// function authenticate(){
-//   firebase.auth().signInWithPopup(provider).then(function(result) {
-//     if (result.credential) {
-//       // This gives you a Google Access Token. You can use it to access the Google API.
-//       var token = result.credential.accessToken;
-//     }
-//     else {
-//       //google sign-in redirect
-//       firebase.auth().signInWithPopup(provider);
-//     }
-//     // The signed-in user info
-//     current_user = result.user;
-//     // Hide sign in
-//     document.getElementById("signin").style.visibility = "hidden";
-//     document.getElementById("signout").style.visibility = "visible";
-//   }).catch(function(error) {
-//     // Handle Errors here.
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // The email of the user's account used.
-//     var email = error.email;
-//     // The firebase.auth.AuthCredential type that was used.
-//     var credential = error.credential;
-//     console.log("Sign in error");
-//   });
-// }
-//
-// function signOut(){
-//   firebase.auth().signOut().then(function() {
-//     // Sign-out successful
-//     current_user = null;
-//     user_info.innerHTML = "";
-//     document.getElementById("signin").style.visibility = "visible";
-//     document.getElementById("signout").style.visibility = "hidden";
-//   }).catch(function(error) {
-//     // An error happened
-//     console.log("Sign out error");
-//   });
-// }
-//
-// //setting an event listener for change of authentication state
-// firebase.auth().onAuthStateChanged(function(user) {
-//   current_user=user;
-//   if (user) {
-//       // User is signed in
-//     user_info.innerHTML = "Welcome, " + user.displayName;
-//     } else {
-//       // No user is signed in
-//     user_info.innerHTML = "";
-//     }
-// });
-//
-// document.getElementById("signin").addEventListener("click", authenticate);
-// document.getElementById("signout").addEventListener("click", signOut);
+function authenticate(){
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    if (result.credential) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+    }
+    else {
+      //google sign-in redirect
+      firebase.auth().signInWithPopup(provider);
+    }
+    // The signed-in user info
+    current_user = result.user;
+    // Hide sign in
+    document.getElementById("signin").style.visibility = "hidden";
+    document.getElementById("signout").style.visibility = "visible";
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    console.log("Sign in error");
+  });
+}
+
+function signOut(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful
+    current_user = null;
+    user_info.innerHTML = "";
+    document.getElementById("signin").style.visibility = "visible";
+    document.getElementById("signout").style.visibility = "hidden";
+  }).catch(function(error) {
+    // An error happened
+    console.log("Sign out error");
+  });
+}
+
+//setting an event listener for change of authentication state
+firebase.auth().onAuthStateChanged(function(user) {
+  current_user=user;
+  if (user) {
+      // User is signed in
+    user_info.innerHTML = "Welcome, " + user.displayName;
+    } else {
+      // No user is signed in
+    user_info.innerHTML = "";
+    }
+});
+
+document.getElementById("signin").addEventListener("click", authenticate);
+document.getElementById("signout").addEventListener("click", signOut);
 
 //Login to Buff List
 function check(form)
@@ -190,7 +190,42 @@ function loadPosts()
 
 }
 
+function loadCarousel()
+{
+  //GET POSTS BASED ON TIMESTAMP, ONCE LINCOLN ADDS THAT TO DATABASE
+  var postsArray = [];
+  database.collection("Tester").get().then(function(querySnapshot)
+  {querySnapshot.forEach(function(doc){
+    if(doc.exists)
+    {
+      postsArray.push(doc.data());
+      //console.log("Document data:", Math.min(doc.data().timestamp));
+      // var post = doc.data();
+      // document.getElementById("image1").src = post.image;
+      // document.getElementById("price1").src = post.price;
+      // document.getElementById("description1").src = post.description;
+      //
+      // document.getElementById("image2").src = post.image;
+      // document.getElementById("price2").src = post.price;
+      // document.getElementById("description2").src = post.description;
+      //
+      // document.getElementById("image3").src = post.image;
+      // document.getElementById("price3").src = post.price;
+      // document.getElementById("description3").src = post.description;
+    }
+
+    });
+  });
+  console.log("Document data:", postsArray);
+  postsArray.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.price > b.price) ? 1 : -1) : -1 )
+  console.log("Document data:", postsArray);
+}
+
 function submitClick(){
+  if(current_user == null){
+    alert("You are not logged in");
+  }
+  else{
   var today = new Date();
     database.collection("Tester").add({
         contact: document.getElementById("ContactInfo").value,
@@ -211,6 +246,7 @@ function submitClick(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
+    }
 }
 function loadeventPosts()
 {
@@ -233,6 +269,10 @@ function loadeventPosts()
 
 }
 function eventsubmitClick(){
+  if(current_user == null){
+    alert("You are not logged in");
+  }
+  else{
     database.collection("EventCalendarTester").add({
         contact: document.getElementById("email").value,
         Description: document.getElementById("eventDescription").value,
@@ -247,6 +287,7 @@ function eventsubmitClick(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
+  }
 }
 
 // Firestore Query for Search
