@@ -217,7 +217,7 @@ function loadCarousel()
     });
   });
   console.log("Document data:", postsArray);
-  postsArray.sort((a, b) => (a.description > b.description) ? 1 : (a.description === b.description) ? ((a.price > b.price) ? 1 : -1) : -1 )
+  postsArray.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.price > b.price) ? 1 : -1) : -1 )
   console.log("Document data:", postsArray);
 }
 
