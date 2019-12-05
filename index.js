@@ -203,6 +203,39 @@ function submitClick(){
         console.error("Error writing document: ", error);
     });
 }
+function loadeventPosts()
+{
+
+  database.collection("EventCalendarTester").get().then(function(querySnapshot)
+  {querySnapshot.forEach(function(doc){
+    if(doc.exists)
+    {
+      console.log("Document data:", doc.data());
+      var post = doc.data();
+      var title = post.PostingHeadline;
+      var description = post.Description;
+      var meetingPlace = post.MeetingPlace;
+      var contact = post.contact;
+    }
+
+    });
+  });
+
+}
+function eventsubmitClick(){
+    database.collection("EventCalendarTester").add({
+        contact: document.getElementById("email").value,
+        Description: document.getElementById("eventDescription").value,
+        MeetingPlace: document.getElementById("place").value,
+        PostingHeadline: document.getElementById("headline").value,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}
 
 function loadCarousel()
 {

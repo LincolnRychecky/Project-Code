@@ -107,7 +107,7 @@
       <a class="nav-link" href="eventCalendar.html"> Event Calendar </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> My Account </a>
+      <a class="nav-link" href="myAccount.html"> My Account </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="aboutus.html"> About Us </a>
@@ -115,9 +115,19 @@
   </ul>
   <button type="button" class="btn btn-success" >Add a post</button>
   <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" id="searchText" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
-  </form>
+  <div class="dropdown">
+    <div class="divider"/>
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ Search
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<button class="dropdown-item" type = "button" href="#" onclick="search(0)">Sports</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(1)">Electronics</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(2)">Instruments</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(3)">Furniture</button>
+<button class="dropdown-item" type = "button" href="#" onclick="search(4)">Other</button>
+</div>
+<div class="divider"/>
 </div>
 </nav>
 <body>
@@ -126,13 +136,29 @@
   <br />
   <h1>Add a posting</h1>
   <form>
-    <div class="form-group">
-      <label>Posting Headline</label>
-      <input type="text" name="headline1" class="form-control" placeholder="Headline">
+  <div class="form-group row">
+    <div class="col">
+      <div class="form-group">
+        <label>Posting Headline</label>
+        <input type="text" id="Headline1" class="form-control" placeholder="Headline">
+      </div>
     </div>
+    <div class="col">
+      <div class="form-group">
+        <label>Contact Info (Email)</label>
+        <input type="text" id="ContactInfo" class="form-control" placeholder="Email Address">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" id="Price" class="form-control" placeholder="Price">
+      </div>
+    </div>
+  </div>
     <div class="form-group">
       <label>Item Description</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+      <textarea class="form-control" id="Textarea1" rows="15"></textarea>
     </div>
     <div class="form-group row">
       <div class="col">
@@ -140,23 +166,23 @@
           <label>Select Tags Related to Posting</label>
           <br />
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Python">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Sports">
             <label class="form-check-label" for="inlineCheckbox1">Sports</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="C++">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Electronics">
             <label class="form-check-label" for="inlineCheckbox2">Electronics</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Java">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Instrument">
             <label class="form-check-label" for="inlineCheckbox3">Instrument</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Scala">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Furniture">
             <label class="form-check-label" for="inlineCheckbox3">Furniture</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Perl">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="Other">
             <label class="form-check-label" for="inlineCheckbox3">Other</label>
           </div>
         </div>
@@ -186,20 +212,6 @@
         <img src="assets/beBoulder.png" class="cuImage" alt="CU Branding">
       </div>
     </footer>
-    <!-- <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyDXl0CyH6CsOsG_3YmnYiVBrddZMA4RuJQ",
-        authDomain: "buff-list.firebaseapp.com",
-        databaseURL: "https://buff-list.firebaseio.com",
-        projectId: "buff-list",
-        storageBucket: "buff-list.appspot.com",
-        messagingSenderId: "562024677329",
-        appId: "1:562024677329:web:5fc43b133b42263a38aaf0",
-        measurementId: "G-0LYL9PHLCC"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    </script> -->
     <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
