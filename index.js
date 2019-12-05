@@ -226,12 +226,13 @@ function loadeventPosts()
 
 }
 function eventsubmitClick(){
+    var today = new Date();
     database.collection("EventCalendarTester").add({
         contact: document.getElementById("email").value,
         Description: document.getElementById("eventDescription").value,
         MeetingPlace: document.getElementById("place").value,
         PostingHeadline: document.getElementById("headline").value,
-        date: document.getElementById("date").value,
+        date: today,
         Sports: document.getElementById("inlineCheckbox1").checked,
         Electronics: document.getElementById("inlineCheckbox2").checked,
         Insttrument: document.getElementById("inlineCheckbox3").checked,
