@@ -214,9 +214,7 @@ function loadeventPosts()
       var title = post.PostingHeadline;
       var description = post.Description;
       var meetingPlace = post.MeetingPlace;
-      var contact = post.Contact;
-      var testPost = addPosting(title, description, meetingPlace, contact, info);
-      document.getElementById('postings').appendChild(testPost);
+      var contact = post.contact;
     }
 
     });
@@ -224,11 +222,11 @@ function loadeventPosts()
 
 }
 function eventsubmitClick(){
-    database.collection("EventCaledarTester").add({
-        contact: document.getElementId("email").value,
-        Description: document.getElementId("eventDescription").value,
-        MeetingPlace: document.getElementId("place").value,
-        PostingHeadline: document.getElementId("headline").value,
+    database.collection("EventCalendarTester").add({
+        contact: document.getElementById("email").value,
+        Description: document.getElementById("eventDescription").value,
+        MeetingPlace: document.getElementById("place").value,
+        PostingHeadline: document.getElementById("headline").value,
     })
     .then(function() {
         console.log("Document successfully written!");
