@@ -232,6 +232,12 @@ function eventsubmitClick(){
         MeetingPlace: document.getElementById("place").value,
         PostingHeadline: document.getElementById("headline").value,
         date: document.getElementById("date").value,
+        Sports: document.getElementById("inlineCheckbox1").checked,
+        Electronics: document.getElementById("inlineCheckbox2").checked,
+        Insttrument: document.getElementById("inlineCheckbox3").checked,
+        Furniture: document.getElementById("inlineCheckbox4").checked,
+        Other: document.getElementById("inlineCheckbox5").checked,
+
     })
     .then(function() {
         console.log("Document successfully written!");
