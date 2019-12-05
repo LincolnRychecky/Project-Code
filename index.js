@@ -119,7 +119,6 @@ function addPosting(title, image, description, price, information)
   //Create card
   let card = document.createElement("div");
   card.className = 'card';
-  card.class = 'collapse';
 
   //Add card body
   let cardBody = document.createElement('div');
@@ -134,7 +133,6 @@ function addPosting(title, image, description, price, information)
   anchor.class = 'expandImage'
   anchor.setAttribute('onclick', "window.open(" + image + ",'popup','width=600,height=600'); return false;");
   card.appendChild(anchor);
-  picture.style = 'height: 25rem; object-fit: cover;'
   picture.className = 'card-img-top';
   picture.src = image;
   anchor.appendChild(picture);
@@ -367,7 +365,7 @@ function search(num){
 function myPosts(){
   var data = database.collection("Tester");
   var email = "bob@colorado.edu";
-  email = 
+  email =
     database.collection('Tester').where("contact", "==", email)
     .get()
     .then(function(querySnapshot) {
