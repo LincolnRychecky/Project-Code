@@ -18,6 +18,9 @@ var docRef = database.collection("Tester");
 
 //create instance of the Google provider instance
 var provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({
+    hd: "colorado.edu"
+});
 
 //user status div
 var user_info = document.getElementById("user_status");
@@ -26,85 +29,85 @@ var user_info = document.getElementById("user_status");
 var current_user = null;
 
 
-// function authenticate(){
-//   firebase.auth().signInWithPopup(provider).then(function(result) {
-//     if (result.credential) {
-//       // This gives you a Google Access Token. You can use it to access the Google API.
-//       var token = result.credential.accessToken;
-//     }
-//     else {
-//       //google sign-in redirect
-//       firebase.auth().signInWithPopup(provider);
-//     }
-//     // The signed-in user info
-//     current_user = result.user;
-//     // Hide sign in
-//     document.getElementById("signin").style.visibility = "hidden";
-//     document.getElementById("signout").style.visibility = "visible";
-//   }).catch(function(error) {
-//     // Handle Errors here.
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // The email of the user's account used.
-//     var email = error.email;
-//     // The firebase.auth.AuthCredential type that was used.
-//     var credential = error.credential;
-//     console.log("Sign in error");
-//   });
-// }
-//
-// function signOut(){
-//   firebase.auth().signOut().then(function() {
-//     // Sign-out successful
-//     current_user = null;
-//     user_info.innerHTML = "";
-//     document.getElementById("signin").style.visibility = "visible";
-//     document.getElementById("signout").style.visibility = "hidden";
-//   }).catch(function(error) {
-//     // An error happened
-//     console.log("Sign out error");
-//   });
-// }
-//
-// //setting an event listener for change of authentication state
-// firebase.auth().onAuthStateChanged(function(user) {
-//   current_user=user;
-//   if (user) {
-//       // User is signed in
-//     user_info.innerHTML = "Welcome, " + user.displayName;
-//     } else {
-//       // No user is signed in
-//     user_info.innerHTML = "";
-//     }
-// });
+function authenticate(){
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    if (result.credential) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+    }
+    else {
+      //google sign-in redirect
+      firebase.auth().signInWithPopup(provider);
+    }
+    // The signed-in user info
+    current_user = result.user;
+    // Hide sign in
+    document.getElementById("signin").style.visibility = "hidden";
+    document.getElementById("signout").style.visibility = "visible";
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    console.log("Sign in error");
+  });
+}
 
-// document.getElementById("signin").addEventListener("click", authenticate);
-// document.getElementById("signout").addEventListener("click", signOut);
+function signOut(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful
+    current_user = null;
+    user_info.innerHTML = "";
+    document.getElementById("signin").style.visibility = "visible";
+    document.getElementById("signout").style.visibility = "hidden";
+  }).catch(function(error) {
+    // An error happened
+    console.log("Sign out error");
+  });
+}
 
-// //Login to Buff List
-// function check(form)
-// {
-//   for(var i = 0; i < users.length; i++){
-//     //if the pair is located in the users and passwords arrays
-//     if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
-//       currentUser = users[i];
-//       alert("Hello, " + currentUser + " welcome back to Buff List.")
-//       return
-//     }
-//   }
-//     alert("Either your username or password is incorrect")
-//     return
-// }
-// //Log off of Buff List
-// function logOff(){
-// currentUser = "Not Logged in";
-// return
+//setting an event listener for change of authentication state
+firebase.auth().onAuthStateChanged(function(user) {
+  current_user=user;
+  if (user) {
+      // User is signed in
+    user_info.innerHTML = "Welcome, " + user.displayName;
+    } else {
+      // No user is signed in
+    user_info.innerHTML = "";
+    }
+});
 
-// }
-// //Create an Account
-// function createAccount(){
+document.getElementById("signin").addEventListener("click", authenticate);
+document.getElementById("signout").addEventListener("click", signOut);
 
-// }
+//Login to Buff List
+function check(form)
+{
+  for(var i = 0; i < users.length; i++){
+    //if the pair is located in the users and passwords arrays
+    if(form.userid.value == users[i] && form.pswrd.value == passwords[i]){
+      currentUser = users[i];
+      alert("Hello, " + currentUser + " welcome back to Buff List.")
+      return
+    }
+  }
+    alert("Either your username or password is incorrect")
+    return
+}
+//Log off of Buff List
+function logOff(){
+currentUser = "Not Logged in";
+return
+
+}
+//Create an Account
+function createAccount(){
+
+}
 
 
 //Add post function
