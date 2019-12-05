@@ -197,26 +197,25 @@ function loadCarousel()
     if(doc.exists)
     {
       postsArray.push(doc.data());
-      //console.log("Document data:", Math.min(doc.data().timestamp));
-      // var post = doc.data();
-      // document.getElementById("image1").src = post.image;
-      // document.getElementById("price1").src = post.price;
-      // document.getElementById("description1").src = post.description;
-      //
-      // document.getElementById("image2").src = post.image;
-      // document.getElementById("price2").src = post.price;
-      // document.getElementById("description2").src = post.description;
-      //
-      // document.getElementById("image3").src = post.image;
-      // document.getElementById("price3").src = post.price;
-      // document.getElementById("description3").src = post.description;
     }
 
     });
   });
   console.log("Document data:", postsArray);
+  console.log("image: ", postsArray[0]);
   postsArray.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.price > b.price) ? 1 : -1) : -1 )
   console.log("Document data:", postsArray);
+  document.getElementById("image1").src = postsArray[0].image;
+  document.getElementById("price1").innerHTML = postsArray[0].price;
+  document.getElementById("description1").innerHTML = postsArray[0].description;
+
+  document.getElementById("image2").src = postsArray[1].image;
+  document.getElementById("price2").innerHTML = postsArray[1].price;
+  document.getElementById("description2").innerHTML = postsArray[1].description;
+
+  document.getElementById("image3").src = postsArray[1].image;
+  document.getElementById("price3").innerHTML = postsArray[1].price;
+  document.getElementById("description3").innerHTML = postsArray[1].description;
 }
 
 function submitClick(){
@@ -253,7 +252,6 @@ function loadeventPosts()
   {querySnapshot.forEach(function(doc){
     if(doc.exists)
     {
-      console.log("Document data:", doc.data());
       var post = doc.data();
       var title = post.PostingHeadline;
       var description = post.Description;
