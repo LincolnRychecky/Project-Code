@@ -191,6 +191,10 @@ function loadPosts()
 }
 
 function submitClick(){
+  if(current_user == null){
+    alert("You are not logged in");
+  }
+  else{
   var today = new Date();
     database.collection("Tester").add({
         contact: document.getElementById("ContactInfo").value,
@@ -211,6 +215,7 @@ function submitClick(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
+    }
 }
 function loadeventPosts()
 {
@@ -233,6 +238,10 @@ function loadeventPosts()
 
 }
 function eventsubmitClick(){
+  if(current_user == null){
+    alert("You are not logged in");
+  }
+  else{
     database.collection("EventCalendarTester").add({
         contact: document.getElementById("email").value,
         Description: document.getElementById("eventDescription").value,
@@ -247,6 +256,7 @@ function eventsubmitClick(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
+  }
 }
 
 // Firestore Query for Search
