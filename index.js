@@ -216,10 +216,10 @@ function loadCarousel()
 }
 
 function submitClick(){
-  if(current_user == null){
-    alert("You are not logged in");
-  }
-  else{
+  // if(current_user == null){
+  //   alert("You are not logged in");
+  // }
+  // else{
   var today = new Date();
     database.collection("Tester").add({
         contact: document.getElementById("ContactInfo").value,
@@ -240,7 +240,7 @@ function submitClick(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-    }
+    //}
 }
 
 function addEvent(title, description, meetingPlace, contact, date)
@@ -337,7 +337,7 @@ function search(num){
         var title = post.title;
         var description = post.description;
         var price = post.price;
-        var image = post.image;
+        var image = "gs://buff-list.appspot.com/Couch.jpeg";
         var info = post.contact;
         var testPost = addPosting(title, image, description, price, info);
         document.getElementById('postings').appendChild(testPost);
