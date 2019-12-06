@@ -198,24 +198,21 @@ function loadCarousel()
     {
       postsArray.push(doc.data());
     }
-
     });
+    console.log("Document data:", postsArray);
+    console.log("image: ", postsArray[2].description);
+    document.getElementById("image1").src = postsArray[0].image;
+    document.getElementById("price1").innerHTML = "$" + postsArray[0].price;
+    document.getElementById("description1").innerHTML = postsArray[0].description;
+
+    document.getElementById("image2").src = postsArray[1].image;
+    document.getElementById("price2").innerHTML = "$" + postsArray[1].price;
+    document.getElementById("description2").innerHTML = postsArray[1].description;
+
+    document.getElementById("image3").src = postsArray[2].image;
+    document.getElementById("price3").innerHTML = "$" + postsArray[2].price;
+    document.getElementById("description3").innerHTML = postsArray[2].description;
   });
-  console.log("Document data:", postsArray);
-  console.log("image: ", postsArray[0]);
-  postsArray.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.price > b.price) ? 1 : -1) : -1 )
-  console.log("Document data:", postsArray);
-  document.getElementById("image1").src = postsArray[0].image;
-  document.getElementById("price1").innerHTML = postsArray[0].price;
-  document.getElementById("description1").innerHTML = postsArray[0].description;
-
-  document.getElementById("image2").src = postsArray[1].image;
-  document.getElementById("price2").innerHTML = postsArray[1].price;
-  document.getElementById("description2").innerHTML = postsArray[1].description;
-
-  document.getElementById("image3").src = postsArray[1].image;
-  document.getElementById("price3").innerHTML = postsArray[1].price;
-  document.getElementById("description3").innerHTML = postsArray[1].description;
 }
 
 function submitClick(){
@@ -329,16 +326,44 @@ function eventsubmitClick(){
 
 // Firestore Query for Search
 function search(num){
+  document.getElementById("postings").innerHTML = "";
+  if(num ==5){
+    database.collection("Tester").get().then(function(querySnapshot)
+    {querySnapshot.forEach(function(doc){
+      if(doc.exists)
+      {
+        console.log("Document data:", doc.data());
+        var post = doc.data();
+        var title = post.title;
+        var description = post.description;
+        var price = post.price;
+        var image = post.image;
+        var info = post.contact;
+        var testPost = addPosting(title, image, description, price, info);
+        document.getElementById('postings').appendChild(testPost);
+      }
+
+      });
+    });
+    return;
+  }
+  console.log("askjdhfbakjsdhbf");
   var data = database.collection("Tester");
   if(num == 0){//Sports
 
-    //var query = data.where("title", "==", "Red Guitar");
-    database.collection('Tester').where("tag", "==", "Sports")
+    database.collection('Tester').where("Sports", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('postings').appendChild(testPost);
         });
     })
     .catch(function(error) {
@@ -347,26 +372,38 @@ function search(num){
     console.log("Sports");
   }else if(num == 1){//Electronics
     console.log("Electronics");
-    database.collection('Tester').where("tag", "==", "Electronics")
+    database.collection('Tester').where("Electronics", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('postings').appendChild(testPost);        });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
   }else if(num == 2){//Instruments
     console.log("Instruments");
-    database.collection('Tester').where("tag", "==", "Instruments")
+    database.collection('Tester').where("Instrument", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('postings').appendChild(testPost);        });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -374,26 +411,38 @@ function search(num){
 
   }else if(num == 3){//Furniture
     console.log("Furniture");
-    database.collection('Tester').where("tag", "==", "Furniture")
+    database.collection('Tester').where("Furniture", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('postings').appendChild(testPost);        });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
   }else if (num == 4){//Other
     console.log("Other");
-    database.collection('Tester').where("tag", "==", "Other")
+    database.collection('Tester').where("Other", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
+          console.log("Document data:", doc.data());
+          var post = doc.data();
+          var title = post.title;
+          var description = post.description;
+          var price = post.price;
+          var image = post.image;
+          var info = post.contact;
+          var testPost = addPosting(title, image, description, price, info);
+          document.getElementById('postings').appendChild(testPost);        });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -404,7 +453,11 @@ function search(num){
 function myPosts(){
   var data = database.collection("Tester");
   var email = "bob@colorado.edu";
-  email =
+  if(current_user == null){
+    return;
+  }
+  var user = firebase.auth().currentUser;
+  email = user.email;
     database.collection('Tester').where("contact", "==", email)
     .get()
     .then(function(querySnapshot) {
