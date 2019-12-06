@@ -25,7 +25,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
-  <body>
+  <body onload="loadeventPosts()">
         <header>
           <div id="cuImage-1">
             <img src="assets/CUbranding.png" class="cuImage" alt="CU Logo">
@@ -61,16 +61,9 @@
               </li>
             </ul>
             <a href="addPosts.html" class="btn btn-success">Add a post</a>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" id="searchText" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-dark" type="submit" onclick="check(this.form)" value="Search">Search</button>
-            </form>
           </div>
         </nav>
-<!-- Event Calendar -->
-<div class="container">
-  <iframe src="https://calendar.google.com/calendar/embed?src=colorado.edu_8j6helolqm313i5t3e77nq5s20%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="1100" height="1000" frameborder="0" scrolling="no"></iframe>
-</div>
+
 <!-- class="d-block w-100" -->
 <!--Form-->
 <div class="container">
@@ -106,10 +99,14 @@
       <textarea class="form-control" id="eventDescription" rows="15"></textarea>
     </div>
 
-
-
 <button id="submitBtn" type = "button" onclick="eventsubmitClick()">Submit</button>
   <script type="text/javascript" src="index.js"></script>
+  </div>
+  <div class="container">
+    <div class="container-fluid">
+      <div class = "card-columns" id = "events">
+      </div>
+    </div>
   </div>
   </body>
 </html>

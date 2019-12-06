@@ -233,7 +233,7 @@ function submitClick(){
         date: today,
         Sports: document.getElementById("inlineCheckbox1").checked,
         Electronics: document.getElementById("inlineCheckbox2").checked,
-        Insttrument: document.getElementById("inlineCheckbox3").checked,
+        Instrument: document.getElementById("inlineCheckbox3").checked,
         Furniture: document.getElementById("inlineCheckbox4").checked,
         Other: document.getElementById("inlineCheckbox5").checked,
     })
@@ -245,6 +245,45 @@ function submitClick(){
     });
     }
 }
+
+function addEvent(title, description, meetingPlace, contact, date)
+{
+
+  //ADD DROPDOWNMENU WITH CONTACT INFORMATION OF USER WHO POSTED ITEM
+
+  //Create card
+  let card = document.createElement("div");
+  card.className = 'card';
+
+  //Add card body
+  let cardBody = document.createElement('div');
+  card.appendChild(cardBody);
+  cardBody.className = 'card-header';
+
+  //Add title
+  let cardTitle = document.createElement('h5');
+  cardTitle.innerHTML = title;
+  cardBody.appendChild(cardTitle);
+
+  //Add description
+  let desc = document.createElement('p');
+  card.appendChild(desc);
+  desc.innerText = description;
+  cardBody.appendChild(desc);
+
+  //Add user contact info
+  // <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  //   Button with data-target
+  // </button>
+
+  let info = document.createElement('p');
+  card.appendChild(info);
+  info.innerText = contact;
+  cardBody2.appendChild(info);
+
+  return card;
+}
+
 function loadeventPosts()
 {
 
@@ -258,12 +297,14 @@ function loadeventPosts()
       var meetingPlace = post.MeetingPlace;
       var contact = post.contact;
       var date = post.date;
+      var testPost = addPosting(title, description, meetingPlace, contact, date);
+      document.getElementById('events').appendChild(testPost);
     }
 
     });
   });
-
 }
+
 function eventsubmitClick(){
   if(current_user == null){
     alert("You are not logged in");
