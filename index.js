@@ -198,24 +198,21 @@ function loadCarousel()
     {
       postsArray.push(doc.data());
     }
-
     });
+    console.log("Document data:", postsArray);
+    console.log("image: ", postsArray[2].description);
+    document.getElementById("image1").src = postsArray[0].image;
+    document.getElementById("price1").innerHTML = "$" + postsArray[0].price;
+    document.getElementById("description1").innerHTML = postsArray[0].description;
+
+    document.getElementById("image2").src = postsArray[1].image;
+    document.getElementById("price2").innerHTML = "$" + postsArray[1].price;
+    document.getElementById("description2").innerHTML = postsArray[1].description;
+
+    document.getElementById("image3").src = postsArray[2].image;
+    document.getElementById("price3").innerHTML = "$" + postsArray[2].price;
+    document.getElementById("description3").innerHTML = postsArray[2].description;
   });
-  console.log("Document data:", postsArray);
-  console.log("image: ", postsArray[0]);
-  postsArray.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.price > b.price) ? 1 : -1) : -1 )
-  console.log("Document data:", postsArray);
-  document.getElementById("image1").src = postsArray[0].image;
-  document.getElementById("price1").innerHTML = postsArray[0].price;
-  document.getElementById("description1").innerHTML = postsArray[0].description;
-
-  document.getElementById("image2").src = postsArray[1].image;
-  document.getElementById("price2").innerHTML = postsArray[1].price;
-  document.getElementById("description2").innerHTML = postsArray[1].description;
-
-  document.getElementById("image3").src = postsArray[1].image;
-  document.getElementById("price3").innerHTML = postsArray[1].price;
-  document.getElementById("description3").innerHTML = postsArray[1].description;
 }
 
 function submitClick(){
